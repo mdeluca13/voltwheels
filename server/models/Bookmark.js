@@ -2,19 +2,30 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const orderSchema = new Schema({
-  purchaseDate: {
-    type: Date,
-    default: Date.now
+const BookmarkSchema = new Schema({
+  
+user: {
+  type: String,
+  required: true
   },
-  products: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Product'
-    }
-  ]
+  make: {
+    type: String,
+    required: true
+  },
+  model: {
+    type: String,
+    required: true
+  },
+  year: {
+    type: Number,
+    required: true
+  },
+  image: {
+    type: String,
+    required: true
+  },
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const Order = mongoose.model('Bookmark', BookmarkSchema);
 
-module.exports = Order;
+module.exports = Bookmark;
