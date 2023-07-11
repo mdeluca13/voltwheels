@@ -15,15 +15,18 @@ export const ADD_ORDER = gql`
   mutation addOrder($products: [ID]!) {
     addOrder(products: $products) {
       purchaseDate
-      products {
+      cars {
         _id
-        name
-        description
+        make
+        model
+        year
+        color
+        range
+        trim
+        extra
+        image
         price
         quantity
-        category {
-          name
-        }
       }
     }
   }

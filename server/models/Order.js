@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const bookmarkSchema = new Schema({
+const orderSchema = new Schema({
   purchaseDate: {
     type: Date,
     default: Date.now
   },
-  products: [
+  cars: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Car'
@@ -15,6 +15,6 @@ const bookmarkSchema = new Schema({
   ]
 });
 
-const Bookmark = mongoose.model('Bookmark', bookmarkSchema);
+const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Bookmark;
+module.exports = Order;
