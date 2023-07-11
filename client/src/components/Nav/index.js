@@ -1,14 +1,37 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import Signup from "../../pages/Signup";
+import OrderHistory from "../../pages/OrderHistory";
+import SaleForm from "../SaleForm";
 
-function Nav() {
+function Nav({ currentPage, handlePageChange }) {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to="/orderHistory">Order History</Link>
+            <Link to="/OrderHistory">Order History</Link>
+          </li>
+          <li>
+            Add A Car
+            <a
+              href="/"
+              onClick={() => {
+                Auth.loggedIn, handlePageChange("SaleForm");
+              }}
+              className="mx-1"
+            ></a>
+          </li>
+          <li>
+            BookMarks
+            <a
+              href="/"
+              onClick={() => {
+                Auth.loggedIn, handlePageChange("BookMarks");
+              }}
+              className="mx-1"
+            ></a>
           </li>
           <li className="mx-1">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
@@ -47,5 +70,37 @@ function Nav() {
     </header>
   );
 }
+export function NavBarContainer() {
+  const [currentPage, setCurrentPage] = useState("Home");
+
+  const renderPage = () => {
+    if (currentPage === "Ads") {
+      return <NavBar />;
+    }
+    if (currentPage === "Home") {
+      return <Login /> && <Signup />;
+    }
+    if (currentPage === "Car") {
+      return <Car />;
+    }
+    if (currentPage === "FAQ") {
+      return <FAQ />;
+    }
+    if (currentPage === "OrderHistory") {
+      return <OrderHistory />;
+    }
+    if (currentPage === "SaleForm") {
+      return <SaleForm />;
+    }
+  };
+}
+const handlePageChange = (page) => setCurrentPage(page);
+
+return (
+  <div>
+    <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
+    {renderPage()}
+  </div>
+);
 
 export default Nav;
