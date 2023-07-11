@@ -14,6 +14,7 @@ const typeDefs = gql`
     image: String
     price: Float
     quantity: Int
+    user: User
   }
 
   type Order {

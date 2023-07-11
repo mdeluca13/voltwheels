@@ -42,7 +42,13 @@ const carSchema = new Schema({
     type: Number,
     min: 0,
     default: 1
-  }
+  },
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ]
 });
 
 const Car = mongoose.model('Car', carSchema);
