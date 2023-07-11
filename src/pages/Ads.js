@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
-import { Ads } from "../utils/mutations";
+// import { Ads } from "../utils/mutations";
 import { idbPromise } from "../utils/helpers";
-import Nav from "../components/Nav/index";
+import Nav from "../pages/AppContainer";
 
 export function Ads() {
-  const [Ads] = useMutation(ADS);
+  const [CarAds] = useMutation(ADS);
 
   useEffect(() => {
     async function Ads() {

@@ -10,10 +10,18 @@ import { setContext } from "@apollo/client/link/context";
 
 import Home from "./pages/Home";
 
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Nav from "./pages/AppContainer";
-import { StoreProvider } from "./utils/GlobalState";
+// import Login from "./Login";
+// import SignUp from "./Signup";
+import Ads from "./Ads";
+import Car from "./Car";
+import FAQ from "./FAQ";
+
+import SaleForm from "./SaleForm";
+
+// import Login from "./pages/Login";
+// import Signup from "./pages/Signup";
+
+// import { StoreProvider } from "./utils/GlobalState";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
 
@@ -40,18 +48,16 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <StoreProvider>
-            <Nav />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/success" element={<Success />} />
-              <Route path="/orderHistory" element={<OrderHistory />} />
-            </Routes>
-          </StoreProvider>
-        </div>
+        <Nav />
+        <Routes>
+          <Route path="" element={<Home />}></Route>
+          <Route path="" element={<Ads />}></Route>
+          <Route path="" element={<Car />}></Route>
+          <Route path="" element={<FAQ />}></Route>
+          <Route path="" element={<OrderHistory />}></Route>
+          <Route path="" element={<Success />}></Route>
+          <Route path="" element={<SaleForm />}></Route>
+        </Routes>
       </Router>
     </ApolloProvider>
   );

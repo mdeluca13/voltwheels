@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from "./Home";
 // import Login from "./Login";
 // import SignUp from "./Signup";
@@ -9,9 +11,9 @@ import OrderHistory from "./OrderHistory";
 import Success from "./Success";
 import SaleForm from "./SaleForm";
 
-export function NavBarContainer() {
+export function AppContainer() {
+  //Conditional Rendering
   const [currentPage, setCurrentPage] = useState("Home");
-
   const renderPage = () => {
     if (currentPage === "Home") {
       return <Nav />;
@@ -19,7 +21,6 @@ export function NavBarContainer() {
     if (currentPage === "Ads") {
       return <Ads />;
     }
-
     if (currentPage === "Car") {
       return <Car />;
     }
@@ -36,9 +37,7 @@ export function NavBarContainer() {
       return <Success />;
     }
   };
-
   const handlePageChange = (page) => setCurrentPage(page);
-
   return (
     <div>
       <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
@@ -46,3 +45,4 @@ export function NavBarContainer() {
     </div>
   );
 }
+export default AppContainer;
