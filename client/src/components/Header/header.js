@@ -86,7 +86,7 @@ const handelKeyDown = event =>{
           }
           <Col lg='6' md='6' sm='6'>
             <div className="header__top__right">
-              <span>Need some help?</span>
+              <span>Call Us:</span>
               <span className="header__top__help">
                 <i className="ri-phone-line"></i> +899-999-9900
               </span>
