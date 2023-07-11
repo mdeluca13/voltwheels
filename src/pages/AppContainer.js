@@ -36,12 +36,13 @@ export function NavBarContainer() {
       return <Success />;
     }
   };
-}
-const handlePageChange = (page) => setCurrentPage(page);
 
-// return (
-//   <div>
-//     <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
-//     {renderPage()}
-//   </div>
-// );
+  const handlePageChange = (page) => setCurrentPage(page);
+
+  return (
+    <div>
+      <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
+      {renderPage()}
+    </div>
+  );
+}

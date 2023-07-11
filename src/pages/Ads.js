@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
-// import Jumbotron from "../components/Jumbotron";
 import { Ads } from "../utils/mutations";
 import { idbPromise } from "../utils/helpers";
 import Nav from "../components/Nav/index";
 
-function Ads() {
+export function Ads() {
   const [Ads] = useMutation(ADS);
 
   useEffect(() => {

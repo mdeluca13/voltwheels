@@ -49,8 +49,6 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/success" element={<Success />} />
               <Route path="/orderHistory" element={<OrderHistory />} />
-              <Route path="/products/:id" element={<Detail />} />
-              <Route path="*" element={<NoMatch />} />
             </Routes>
           </StoreProvider>
         </div>
