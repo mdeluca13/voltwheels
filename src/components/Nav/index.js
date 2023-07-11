@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Signup from "../../pages/Signup";
 import OrderHistory from "../../pages/OrderHistory";
 import SaleForm from "../SaleForm";
+import Login from "../../pages/Login";
 
 function Nav({ currentPage, handlePageChange }) {
   function showNavigation() {
