@@ -1,10 +1,6 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import Signup from "../../pages/Signup";
-import OrderHistory from "../../pages/OrderHistory";
-import SaleForm from "../SaleForm";
-import Login from "../../pages/Login";
 
 function Nav({ currentPage, handlePageChange }) {
   function showNavigation() {
@@ -71,37 +67,5 @@ function Nav({ currentPage, handlePageChange }) {
     </header>
   );
 }
-export function NavBarContainer() {
-  const [currentPage, setCurrentPage] = useState("Home");
-
-  const renderPage = () => {
-    if (currentPage === "Ads") {
-      return <NavBar />;
-    }
-    if (currentPage === "Home") {
-      return <Login /> && <Signup />;
-    }
-    if (currentPage === "Car") {
-      return <Car />;
-    }
-    if (currentPage === "FAQ") {
-      return <FAQ />;
-    }
-    if (currentPage === "OrderHistory") {
-      return <OrderHistory />;
-    }
-    if (currentPage === "SaleForm") {
-      return <SaleForm />;
-    }
-  };
-}
-const handlePageChange = (page) => setCurrentPage(page);
-
-return (
-  <div>
-    <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
-    {renderPage()}
-  </div>
-);
 
 export default Nav;
