@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import Jumbotron from "../components/Jumbotron";
 import { Ads } from "../utils/mutations";
 import { idbPromise } from "../utils/helpers";
+import Nav from "../components/Nav/index";
 
 function Ads() {
   const [Ads] = useMutation(ADS);
@@ -31,8 +32,41 @@ function Ads() {
 
   return (
     <div>
+      <Nav />
       <Ads>
-        <Container></Container>
+        <header>
+          <h2>Your Ads</h2>
+        </header>
+        <Container>
+          //individual car Ads
+          <card>
+            <button></button>
+            <h3>{this.CarSpecs}</h3>
+            <h3>{this.Price}</h3>
+          </card>
+          <card>
+            <button></button>
+            <h3>{this.CarSpecs}</h3>
+            <h3>{this.Price}</h3>
+          </card>
+          <card>
+            <button></button>
+            <h3>{this.CarSpecs}</h3>
+            <h3>{this.Price}</h3>
+          </card>
+          <card>
+            <button></button>
+            <h3>{this.CarSpecs}</h3>
+            <h3>{this.Price}</h3>
+          </card>
+        </Container>
+        //side column
+        <aside>{bookMarks}</aside>
+        <footer>
+          <div>
+            <h1>Car info</h1>
+          </div>
+        </footer>
       </Ads>
     </div>
   );
