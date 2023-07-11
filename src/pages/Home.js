@@ -1,26 +1,60 @@
-// import React from "react";
-// import ProductList from "../components/ProductList";
-// import CategoryMenu from "../components/CategoryMenu";
-// import Cart from "../components/Cart";
+import React from "react";
+import Auth from "../utils/auth";
+import { Link } from "react-router-dom";
+import "../components/Nav/NavBar.css";
 
-// import SaleForm from "../components/SaleForm";
-// // import Ads from "../pages/Ads";
-// // import Car from "../pages/Car";
-// // import FAQ from "../pages/FAQ";
-// // import Home from "../pages/Home";
-// import Login from "../pages/Login";
-// import OrderHistory from "../pages/OrderHistory";
-// import SignUp from "../pages/Signup";
-// import Success from "../pages/Success";
+function Nav({ currentPage, handlePageChange }) {
+  function showNavigation() {
+    if (Auth.loggedIn()) {
+      return (
+        <ul className="flex-row">
+          <li className="mx-1">
+            <Link to="/OrderHistory">Order History</Link>
+          </li>
+          <li>
+            Add A Car
+            <a onClick={() => handlePageChange("SaleForm")}></a>
+          </li>
+          <li>
+            BookMarks
+            <a onClick={() => handlePageChange("BookMarks")}> </a>
+          </li>
+          <li className="mx-1">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/" onClick={() => Auth.logout()}>
+              Logout
+            </a>
+          </li>
+        </ul>
+      );
+    } else {
+      return (
+        <ul className="flex-row">
+          <li className="mx-1">
+            <Link to="/signup">Signup</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      );
+    }
+  }
 
-// const Home = () => {
-//   return (
-//     <div className="container">
-//       <CategoryMenu />
-//       <ProductList />
-//       <Cart />
-//     </div>
-//   );
-// };
+  return (
+    <header className="flex-row px-1">
+      <h1>
+        <Link to="/">
+          <span role="img" aria-label="lighting bolt">
+            ⚡
+          </span>
+          VoltWheels
+        </Link>
+      </h1>
 
-// export default Home;
+      <nav>{showNavigation()}</nav>
+    </header>
+  );
+}
+
+export default Nav;

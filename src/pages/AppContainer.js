@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import Nav from "../components/Nav/index";
+import Nav from "./Home";
 // import Login from "./Login";
 // import SignUp from "./Signup";
 import Ads from "./Ads";
 import Car from "./Car";
-
 import FAQ from "./FAQ";
 import OrderHistory from "./OrderHistory";
 import Success from "./Success";
-import Home from "./Home";
 import SaleForm from "./SaleForm";
 
 export function NavBarContainer() {
@@ -41,9 +39,9 @@ export function NavBarContainer() {
 }
 const handlePageChange = (page) => setCurrentPage(page);
 
-return (
-  <div>
-    <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
-    {renderPage()}
-  </div>
-);
+// return (
+//   <div>
+//     <Nav currentPage={currentPage} handlePageChange={handlePageChange} />
+//     {renderPage()}
+//   </div>
+// );
