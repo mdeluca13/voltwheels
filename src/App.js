@@ -8,22 +8,18 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-import Home from "./pages/Nav";
-
-// import Login from "./Login";
-// import SignUp from "./Signup";
-import Ads from "./Ads";
-import Car from "./Car";
-import FAQ from "./FAQ";
-
-import SaleForm from "./SaleForm";
-
+//Importing pages:
+import Nav from "./pages/Nav";
+import Ads from "./pages/Ads";
+import Car from "./pages/Car";
+import FAQ from "./pages/FAQ";
+import SaleForm from "./pages/SaleForm";
+import Success from "./pages/Success";
+import OrderHistory from "./pages/OrderHistory";
 // import Login from "./pages/Login";
 // import Signup from "./pages/Signup";
 
 // import { StoreProvider } from "./utils/GlobalState";
-import Success from "./pages/Success";
-import OrderHistory from "./pages/OrderHistory";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -44,23 +40,21 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
+export default function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
         <Nav />
         <Routes>
-          <Route path="" element={<Home />}></Route>
-          <Route path="" element={<Ads />}></Route>
-          <Route path="" element={<Car />}></Route>
-          <Route path="" element={<FAQ />}></Route>
-          <Route path="" element={<OrderHistory />}></Route>
-          <Route path="" element={<Success />}></Route>
-          <Route path="" element={<SaleForm />}></Route>
+          <Route path="./Home" element={<Nav />}></Route>
+          <Route path="./Ads" element={<Ads />}></Route>
+          <Route path="./Car" element={<Car />}></Route>
+          <Route path="./FAQ" element={<FAQ />}></Route>
+          <Route path="./OrderHistory" element={<OrderHistory />}></Route>
+          <Route path="./Success" element={<Success />}></Route>
+          <Route path="./SaleForm" element={<SaleForm />}></Route>
         </Routes>
       </Router>
     </ApolloProvider>
   );
 }
-
-export default App;
