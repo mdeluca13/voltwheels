@@ -16,7 +16,7 @@ function Success() {
         const { data } = await addOrder({ variables: { cars } });
         const carsData = data.addOrder.cars;
 
-        productData.forEach((item) => {
+        carsData.forEach((item) => {
           idbPromise("order", "delete", item);
         });
       }
