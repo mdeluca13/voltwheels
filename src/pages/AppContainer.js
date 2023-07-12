@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Nav from "./Home";
+import Nav from "./Nav";
 // import Login from "./Login";
 // import SignUp from "./Signup";
 import Ads from "./Ads";
