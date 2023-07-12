@@ -4,7 +4,7 @@ import { Ads } from "../utils/mutations";
 import { idbPromise } from "../utils/helpers";
 import Nav from "../components/Nav/index";
 
-export function Ads() {
+export function Ads({ currentPage, handlePageChange }) {
   const [Ads] = useMutation(ADS);
 
   useEffect(() => {
@@ -39,24 +39,80 @@ export function Ads() {
         <Container>
           //individual car Ads
           <card>
-            <button></button>
-            <h3>{this.CarSpecs}</h3>
-            <h3>{this.Price}</h3>
+            <button
+              onClick={() => handlePageChange("Car")}
+              className={currentPage === "Car"}
+            >
+              Check Listing
+            </button>
+            <h3>{cars.name}</h3>
+            <h3>{cars.make}</h3>
+            <h3>{cars.model}</h3>
+            <h3>{cars.year}</h3>
+            <h3>{cars.color}</h3>
+            <h3>{cars.range}</h3>
+            <h3>{cars.trim}</h3>
+            <h3>{cars.extra}</h3>
+            <h3>{cars.image}</h3>
+            <h3>{cars.price}</h3>
+            <h3>{cars.quantity}</h3>
           </card>
           <card>
-            <button></button>
-            <h3>{this.CarSpecs}</h3>
-            <h3>{this.Price}</h3>
+            <button
+              onClick={() => handlePageChange("Car")}
+              className={currentPage === "Car/:id"}
+            >
+              Check Listing
+            </button>
+            <h3>{cars.name}</h3>
+            <h3>{cars.make}</h3>
+            <h3>{cars.model}</h3>
+            <h3>{cars.year}</h3>
+            <h3>{cars.color}</h3>
+            <h3>{cars.range}</h3>
+            <h3>{cars.trim}</h3>
+            <h3>{cars.extra}</h3>
+            <h3>{cars.image}</h3>
+            <h3>{cars.price}</h3>
+            <h3>{cars.quantity}</h3>
           </card>
           <card>
-            <button></button>
-            <h3>{this.CarSpecs}</h3>
-            <h3>{this.Price}</h3>
+            <button
+              onClick={() => handlePageChange("Car")}
+              className={currentPage === "Car/:id"}
+            >
+              Check Listing
+            </button>
+            <h3>{cars.name}</h3>
+            <h3>{cars.make}</h3>
+            <h3>{cars.model}</h3>
+            <h3>{cars.year}</h3>
+            <h3>{cars.color}</h3>
+            <h3>{cars.range}</h3>
+            <h3>{cars.trim}</h3>
+            <h3>{cars.extra}</h3>
+            <h3>{cars.image}</h3>
+            <h3>{cars.price}</h3>
+            <h3>{cars.quantity}</h3>
           </card>
           <card>
-            <button></button>
-            <h3>{this.CarSpecs}</h3>
-            <h3>{this.Price}</h3>
+            <button
+              onClick={() => handlePageChange("Car")}
+              className={currentPage === "Car"}
+            >
+              Check Listing
+            </button>
+            <h3>{cars.name}</h3>
+            <h3>{cars.make}</h3>
+            <h3>{cars.model}</h3>
+            <h3>{cars.year}</h3>
+            <h3>{cars.color}</h3>
+            <h3>{cars.range}</h3>
+            <h3>{cars.trim}</h3>
+            <h3>{cars.extra}</h3>
+            <h3>{cars.image}</h3>
+            <h3>{cars.price}</h3>
+            <h3>{cars.quantity}</h3>
           </card>
         </Container>
         //side column
@@ -71,4 +127,9 @@ export function Ads() {
   );
 }
 
+const handlePageChange = (page) => CurrentPage(page);
+<Nav currentPage={currentPage} handlePageChange={handlePageChange} />;
+{
+  renderPage();
+}
 export default Ads;
