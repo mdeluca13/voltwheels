@@ -13,11 +13,11 @@ function Nav({ currentPage, handlePageChange }) {
           </li>
           <li>
             Add A Car
-            <a onClick={() => handlePageChange("SaleForm")}></a>
+            <Link to="/Ads">Car Ads</Link>
           </li>
           <li>
             BookMarks
-            <a onClick={() => handlePageChange("BookMarks")}> </a>
+            <Link to="/SaleForm">Add Car</Link>
           </li>
           <li className="mx-1">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}

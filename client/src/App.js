@@ -10,14 +10,15 @@ import { setContext } from "@apollo/client/link/context";
 
 //Importing pages:
 import Nav from "./pages/Nav";
-import Ads from "./pages/Ads";
+// import Ads from "./pages/Ads";
 import Car from "./pages/Car";
 import FAQ from "./pages/FAQ";
 import SaleForm from "./pages/SaleForm";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
-// import Login from "./pages/Login";
-// import Signup from "./pages/Signup";
+import { LOGIN } from "./utils/mutations";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 // import { StoreProvider } from "./utils/GlobalState";
 
@@ -46,13 +47,15 @@ export default function App() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="./Home" element={<Nav />}></Route>
-          <Route path="./Ads" element={<Ads />}></Route>
-          <Route path="./Car" element={<Car />}></Route>
-          <Route path="./FAQ" element={<FAQ />}></Route>
-          <Route path="./OrderHistory" element={<OrderHistory />}></Route>
-          <Route path="./Success" element={<Success />}></Route>
-          <Route path="./SaleForm" element={<SaleForm />}></Route>
+          <Route path="/Home" element={<Nav />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/Signup" element={<Signup />}></Route>
+          {/* <Route path="./Ads" element={<Ads />}></Route> */}
+          <Route path="/Car" element={<Car />}></Route>
+          <Route path="/FAQ" element={<FAQ />}></Route>
+          <Route path="/OrderHistory" element={<OrderHistory />}></Route>
+          <Route path="/Success" element={<Success />}></Route>
+          <Route path="/SaleForm" element={<SaleForm />}></Route>
         </Routes>
       </Router>
     </ApolloProvider>
