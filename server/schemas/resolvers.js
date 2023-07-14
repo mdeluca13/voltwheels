@@ -1,24 +1,20 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Ad, Car, Bookmark, Order } = require('../models');
+const { User, Car, Bookmark, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
-    categories: async () => {
-      return await Category.find();
-    },
     cars: async () => {
-      return await Product.find(params);
+      return await Car.find(params);
     },
     car: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+      return await Car.findById(_id);
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
+          path: 'orders.cars'
         });
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
@@ -31,8 +27,7 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
+          path: 'orders.cars'
         });
 
         return user.orders.id(_id);
@@ -42,7 +37,7 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
+      const order = new Order({ cars: args.cars });
       const line_items = [];
 
       const { cars } = await order.populate('cars');
@@ -106,7 +101,7 @@ const resolvers = {
     updateCar: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+      return await Car.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

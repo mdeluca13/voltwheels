@@ -8,11 +8,10 @@ import {
   REMOVE_FROM_ORDER,
   UPDATE_ORDER_QUANTITY,
   ADD_TO_ORDER,
-  UPDATE_PRODUCTS,
+  UPDATE_CAR,
 } from '../utils/actions';
-import { QUERY_CARS } from '../utils/queries';
+import { QUERY_CAR, QUERY_ALL_CARS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
-import spinner from '../assets/spinner.gif';
 
 function Detail() {
   const [state, dispatch] = useStoreContext();
@@ -20,19 +19,19 @@ function Detail() {
 
   const [currentCar, setCurrentCar] = useState({});
 
-  const { loading, data } = useQuery(QUERY_CARS);
+  const { loading, data } = useQuery(QUERY_CAR);
 
   const { cars, order } = state;
 
   useEffect(() => {
     // already in global store
     if (cars.length) {
-      setCurrentProduct(cars.find((product) => product._id === id));
+      setCurrentCar(cars.find((car) => car._id === id));
     }
     // retrieved from server
     else if (data) {
       dispatch({
-        type: UPDATE_CARS,
+        type: UPDATE_CAR,
         cars: data.cars,
       });
 
@@ -42,10 +41,10 @@ function Detail() {
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('cars', 'get').then((indexedCars) => {
+      idbPromise('cars', 'get').then((indexedCar) => {
         dispatch({
-          type: UPDATE_CARS,
-          products: indexedCars,
+          type: UPDATE_CAR,
+          products: indexedCar,
         });
       });
     }
@@ -66,9 +65,9 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_ORDER,
-        product: { ...currentProduct, purchaseQuantity: 1 },
+        car: { ...currentCar, purchaseQuantity: 1 },
       });
-      idbPromise('order', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise('order', 'put', { ...currentCar, purchaseQuantity: 1 });
     }
   };
 
@@ -108,7 +107,7 @@ function Detail() {
           />
         </div>
       ) : null}
-      {loading ? <img src={spinner} alt="loading" /> : null}
+      {loading ? <p>Loading...</p> : null}
       <Order />
     </>
   );

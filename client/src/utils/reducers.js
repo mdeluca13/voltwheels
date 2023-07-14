@@ -1,52 +1,50 @@
 import { useReducer } from "react";
 import {
-  UPDATE_PRODUCTS,
+  UPDATE_CAR,
   ADD_TO_ORDER,
   UPDATE_ORDER_QUANTITY,
   REMOVE_FROM_ORDER,
   ADD_MULTIPLE_TO_ORDER,
-  UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY,
   CLEAR_ORDER,
   TOGGLE_ORDER
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case UPDATE_PRODUCTS:
+    case UPDATE_CAR:
       return {
         ...state,
-        products: [...action.products],
+        products: [...action.car],
       };
 
     case ADD_TO_ORDER:
       return {
         ...state,
         orderOpen: true,
-        order: [...state.order, action.product],
+        order: [...state.order, action.car],
       };
 
     case ADD_MULTIPLE_TO_ORDER:
       return {
         ...state,
-        order: [...state.order, ...action.products],
+        order: [...state.order, ...action.cars],
       };
 
     case UPDATE_ORDER_QUANTITY:
       return {
         ...state,
         orderOpen: true,
-        order: state.order.map(product => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity
+        order: state.order.map(car => {
+          if (action._id === car._id) {
+            car.purchaseQuantity = action.purchaseQuantity
           }
-          return product
+          return car
         })
       };
 
     case REMOVE_FROM_ORDER:
-      let newState = state.order.filter(product => {
-        return product._id !== action._id;
+      let newState = state.order.filter(car => {
+        return car._id !== action._id;
       });
 
       return {
@@ -67,24 +65,9 @@ export const reducer = (state, action) => {
         ...state,
         orderOpen: !state.orderOpen
       };
-
-    case UPDATE_CATEGORIES:
-      return {
-        ...state,
-        categories: [...action.categories],
-      };
-
-    case UPDATE_CURRENT_CATEGORY:
-      return {
-        ...state,
-        currentCategory: action.currentCategory
-      }
-
-    default:
-      return state;
   }
 };
 
-export function useProductReducer(initialState) {
+export function useCarReducer(initialState) {
   return useReducer(reducer, initialState)
 }

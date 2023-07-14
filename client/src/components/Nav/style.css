@@ -1,0 +1,45 @@
+.navBarLinks {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+
+  /* margin-left: 60%; */
+  float: inline-end !important;
+}
+@media (min-width: 992px) {
+  #navbar {
+    /* padding-top: 5px;
+        padding-bottom: 5px; */
+    transition: padding-top 0.8s, padding-bottom 0.8s;
+    border: none;
+    background-color: #001f30;
+    transition-duration: 0.8s;
+  }
+
+  #navbar .navbar-brand {
+    font-size: 1.75em;
+    transition: all 0.8s;
+  }
+
+  #navbar .navbar-nav .nav-item .nav-link {
+    padding-left: 20px;
+    background-color: #212529 !important; /* Black background color */
+    position: fixed !important; /* Make it stick/fixed */
+    top: 0; /* Stay on top */
+    width: 100%; /* Full width */
+    transition: top 1s; /* Transition effect when sliding down (and up) */
+  }
+
+  #navbar.navbar-shrink {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #212529;
+  }
+
+  #navbar.navbar-shrink .navbar-brand {
+    font-size: 1.25em;
+    padding: 5px 0;
+    /* transition-duration: 0.8s; */
+  }
+}

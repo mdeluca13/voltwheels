@@ -41,7 +41,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    car: [Car]
+    cars: [Car]
     car(_id: ID!): Car
     user: User
     order(_id: ID!): Order

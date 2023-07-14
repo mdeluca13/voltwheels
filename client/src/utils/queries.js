@@ -8,6 +8,24 @@ export const QUERY_CHECKOUT = gql`
   }
 `;
 
+export const QUERY_CAR = gql`
+  {
+    car {
+      _id
+      make
+      model
+      year
+      color
+      range
+      trim
+      extra
+      image
+      price
+      quantity
+    }
+  }
+`;
+
 export const QUERY_ALL_CARS = gql`
   {
     cars {
