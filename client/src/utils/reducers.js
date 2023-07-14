@@ -1,90 +1,73 @@
 import { useReducer } from "react";
 import {
-  UPDATE_PRODUCTS,
-  ADD_TO_CART,
-  UPDATE_CART_QUANTITY,
-  REMOVE_FROM_CART,
-  ADD_MULTIPLE_TO_CART,
-  UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY,
-  CLEAR_CART,
-  TOGGLE_CART
+  UPDATE_CAR,
+  ADD_TO_ORDER,
+  UPDATE_ORDER_QUANTITY,
+  REMOVE_FROM_ORDER,
+  ADD_MULTIPLE_TO_ORDER,
+  CLEAR_ORDER,
+  TOGGLE_ORDER
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case UPDATE_PRODUCTS:
+    case UPDATE_CAR:
       return {
         ...state,
-        products: [...action.products],
+        products: [...action.car],
       };
 
-    case ADD_TO_CART:
+    case ADD_TO_ORDER:
       return {
         ...state,
-        cartOpen: true,
-        cart: [...state.cart, action.product],
+        orderOpen: true,
+        order: [...state.order, action.car],
       };
 
-    case ADD_MULTIPLE_TO_CART:
+    case ADD_MULTIPLE_TO_ORDER:
       return {
         ...state,
-        cart: [...state.cart, ...action.products],
+        order: [...state.order, ...action.cars],
       };
 
-    case UPDATE_CART_QUANTITY:
+    case UPDATE_ORDER_QUANTITY:
       return {
         ...state,
-        cartOpen: true,
-        cart: state.cart.map(product => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity
+        orderOpen: true,
+        order: state.order.map(car => {
+          if (action._id === car._id) {
+            car.purchaseQuantity = action.purchaseQuantity
           }
-          return product
+          return car
         })
       };
 
-    case REMOVE_FROM_CART:
-      let newState = state.cart.filter(product => {
-        return product._id !== action._id;
+    case REMOVE_FROM_ORDER:
+      let newState = state.order.filter(car => {
+        return car._id !== action._id;
       });
 
       return {
         ...state,
-        cartOpen: newState.length > 0,
-        cart: newState
+        orderOpen: newState.length > 0,
+        order: newState
       };
 
-    case CLEAR_CART:
+    case CLEAR_ORDER:
       return {
         ...state,
-        cartOpen: false,
-        cart: []
+        orderOpen: false,
+        order: []
       };
 
-    case TOGGLE_CART:
+    case TOGGLE_ORDER:
       return {
         ...state,
-        cartOpen: !state.cartOpen
+        orderOpen: !state.orderOpen
       };
-
-    case UPDATE_CATEGORIES:
-      return {
-        ...state,
-        categories: [...action.categories],
-      };
-
-    case UPDATE_CURRENT_CATEGORY:
-      return {
-        ...state,
-        currentCategory: action.currentCategory
-      }
-
-    default:
-      return state;
   }
 };
 
-export function useProductReducer(initialState) {
+export function useCarReducer(initialState) {
   return useReducer(reducer, initialState)
 }

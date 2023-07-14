@@ -2,114 +2,113 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import Cart from '../components/Cart';
+import Order from '../components/Order';
 import { useStoreContext } from '../utils/GlobalState';
 import {
-  REMOVE_FROM_CART,
-  UPDATE_CART_QUANTITY,
-  ADD_TO_CART,
-  UPDATE_PRODUCTS,
+  REMOVE_FROM_ORDER,
+  UPDATE_ORDER_QUANTITY,
+  ADD_TO_ORDER,
+  UPDATE_CAR,
 } from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_CAR, QUERY_ALL_CARS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
-import spinner from '../assets/spinner.gif';
 
 function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
-  const [currentProduct, setCurrentProduct] = useState({});
+  const [currentCar, setCurrentCar] = useState({});
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const { loading, data } = useQuery(QUERY_CAR);
 
-  const { products, cart } = state;
+  const { cars, order } = state;
 
   useEffect(() => {
     // already in global store
-    if (products.length) {
-      setCurrentProduct(products.find((product) => product._id === id));
+    if (cars.length) {
+      setCurrentCar(cars.find((car) => car._id === id));
     }
     // retrieved from server
     else if (data) {
       dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
+        type: UPDATE_CAR,
+        cars: data.cars,
       });
 
-      data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
+      data.cars.forEach((car) => {
+        idbPromise('cars', 'put', car);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
+      idbPromise('cars', 'get').then((indexedCar) => {
         dispatch({
-          type: UPDATE_PRODUCTS,
-          products: indexedProducts,
+          type: UPDATE_CAR,
+          products: indexedCar,
         });
       });
     }
-  }, [products, data, loading, dispatch, id]);
+  }, [cars, data, loading, dispatch, id]);
 
-  const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === id);
-    if (itemInCart) {
+  const addToOrder = () => {
+    const itemInOrder = order.find((orderItem) => orderItem._id === id);
+    if (itemInOrder) {
       dispatch({
-        type: UPDATE_CART_QUANTITY,
+        type: UPDATE_ORDER_QUANTITY,
         _id: id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        purchaseQuantity: parseInt(itemInOrder.purchaseQuantity) + 1,
       });
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      idbPromise('order', 'put', {
+        ...itemInOrder,
+        purchaseQuantity: parseInt(itemInOrder.purchaseQuantity) + 1,
       });
     } else {
       dispatch({
-        type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: 1 },
+        type: ADD_TO_ORDER,
+        car: { ...currentCar, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise('order', 'put', { ...currentCar, purchaseQuantity: 1 });
     }
   };
 
-  const removeFromCart = () => {
+  const removeFromOrder = () => {
     dispatch({
-      type: REMOVE_FROM_CART,
-      _id: currentProduct._id,
+      type: REMOVE_FROM_ORDER,
+      _id: currentCar._id,
     });
 
-    idbPromise('cart', 'delete', { ...currentProduct });
+    idbPromise('order', 'delete', { ...currentCar });
   };
 
   return (
     <>
-      {currentProduct && cart ? (
+      {currentCar && order ? (
         <div className="container my-1">
-          <Link to="/">← Back to Products</Link>
+          <Link to="/">← Back to Cars</Link>
 
-          <h2>{currentProduct.name}</h2>
+          <h2>{currentCar.make} {currentCar.model}</h2>
 
-          <p>{currentProduct.description}</p>
+          <p>{currentCar.description}</p>
 
           <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
+            <strong>Price:</strong>${currentCar.price}{' '}
+            <button onClick={addToOrder}>Add to Order</button>
             <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
+              disabled={!order.find((p) => p._id === currentCar._id)}
+              onClick={removeFromOrder}
             >
-              Remove from Cart
+              Remove from Order
             </button>
           </p>
 
           <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
+            src={`/images/${currentCar.image}`}
+            alt={currentCar.model}
           />
         </div>
       ) : null}
-      {loading ? <img src={spinner} alt="loading" /> : null}
-      <Cart />
+      {loading ? <p>Loading...</p> : null}
+      <Order />
     </>
   );
 }
