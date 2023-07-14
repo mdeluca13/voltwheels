@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import './style.css';
 import { useState } from 'react';
-import userData from '../../assets/data/userData';
 import { useNavigate } from 'react-router-dom';
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 

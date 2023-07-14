@@ -2,6 +2,7 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import "./style.css";
+import logo from './logo.png';
 
 function Nav({ currentPage, handlePageChange }) {
   function showNavigation() {
@@ -45,10 +46,7 @@ function Nav({ currentPage, handlePageChange }) {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="lighting bolt">
-            ⚡
-          </span>
-          VoltWheels
+        <img src={logo} width={150} height={100} />
         </Link>
       </h1>
 
