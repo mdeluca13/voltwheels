@@ -9,7 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 //Importing pages:
-import Header from  "./components/Header/index";
+
 import Nav from "./components/Nav/index";
 // import Ads from "./pages/Ads";
 import Car from "./pages/Car";

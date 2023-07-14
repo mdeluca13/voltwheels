@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import logo from './logo.png';
 
+
 function Nav({ currentPage, handlePageChange }) {
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -37,6 +38,9 @@ function Nav({ currentPage, handlePageChange }) {
           <li className="mx-1">
             <Link to="/login">Login</Link>
           </li>
+          <li className="mx-1">
+            <Link to="/faq">FAQs</Link>
+          </li>
         </ul>
       );
     }
@@ -48,6 +52,7 @@ function Nav({ currentPage, handlePageChange }) {
         <Link to="/">
         <img src={logo} width={150} height={100} />
         </Link>
+
       </h1>
 
       <nav>{showNavigation()}</nav>
