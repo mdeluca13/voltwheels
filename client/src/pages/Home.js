@@ -1,12 +1,14 @@
 import React from "react";
-import Header from "../components/Header/index";
+import Nav from "../components/Nav/index";
+import Video from "../components/Video/index";
 import CarList from "../components/CarList";
 import Order from "../components/Order";
 
 const Home = () => {
   return (
     <div className="container">
-      <Header />
+      <Nav />
+      <Video />
       <CarList />
       <Order />
     </div>

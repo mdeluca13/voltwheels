@@ -11,6 +11,7 @@ import { setContext } from "@apollo/client/link/context";
 //Importing pages:
 
 import Nav from "./components/Nav/index";
+import Video from "./components/Video/index";
 // import Ads from "./pages/Ads";
 import Car from "./pages/Car";
 import FAQ from "./pages/FAQ";
@@ -48,7 +49,7 @@ export default function App() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="/Home" element={<Nav />}></Route>
+          <Route path="/" element={<Video />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/Signup" element={<Signup />}></Route>
           {/* <Route path="./Ads" element={<Ads />}></Route> */}
