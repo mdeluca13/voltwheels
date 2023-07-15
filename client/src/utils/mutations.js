@@ -52,3 +52,35 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_CAR = gql`
+  mutation addCar(
+    $make: String!
+    $model: String!
+    $year: Int!
+    $color: String!
+    $range: Int!
+    $trim: String!
+    $image: String
+    $extra: String!
+    $class: String!
+    $price: Float!
+    $quantity: Int!
+
+  ) {
+    addCar(
+      make: $make
+      model: $model
+      year: $year
+      color: $color
+      range: $range
+      trim: $trim
+      image: $image
+      extra: $extra
+      class: $class
+      price: $price
+      quantity: $quantity
+      
+    ) 
+  }
+`;

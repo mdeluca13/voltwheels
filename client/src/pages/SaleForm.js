@@ -1,27 +1,36 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
-
+import { ADD_CAR } from '../utils/mutations';
 import ImageUpload from '../components/Image';
 
 function SaleForm() {
-  const [formState, setFormState] = useState({ make: '', model: '' });
-  const [addUser] = useMutation(ADD_USER);
+  
+  const [formState, setFormState] = useState({ make: '', model: '', year: '', color: '', range: '', trim: '', extra: '', class: '', image: '', price: '', quantity: '' });
+  const [addCar] = useMutation(ADD_CAR);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
+    try { 
+      const { mutationResponse } = await addCar({
       variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
+        make: formState.make,
+        model: formState.model,
+        year: formState.year,
+        color: formState.color,
+        range: formState.range,
+        trim: formState.trim,
+        quantity: formState.quantity,
+        extra: formState.extra,
+        class: formState.class,
+        image: formState.image,
+        price: formState.price
       },
     });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+  }
+  catch (err){
+    console.log(err)
+  }
+    // console.log(formState.price)
   };
 
   const handleChange = (event) => {
@@ -43,37 +52,45 @@ function SaleForm() {
       <form>
         <label>
           Make:
-          <input type="text" name="make" />{" "}
+          <input type="text" name="make" onChange={handleChange}/>{" "}
         </label>
         <label>
           Model:
-          <input type="text" name="model" />{" "}
+          <input type="text" name="model" onChange={handleChange}/>{" "}
         </label>
         <label>
           Year:
-          <input type="text" name="year" />{" "}
+          <input type="text" name="year" onChange={handleChange}/>{" "}
         </label>
         <label>
           Color:
-          <input type="text" name="color" />{" "}
+          <input type="text" name="color" onChange={handleChange}/>{" "}
         </label>
         <label>
           Range:
-          <input type="text" name="range" />{" "}
+          <input type="text" name="range" onChange={handleChange}/>{" "}
         </label>
         <label>
-          Features:
-          <input type="text" name="features" />{" "}
+          Trim:
+          <input type="text" name="trim" onChange={handleChange}/>{" "}
+        </label>
+        <label>
+          Extra:
+          <input type="text" name="extra" onChange={handleChange}/>{" "}
         </label>
         <label>
           Class:
-          <input type="text" name="class" />{" "}
+          <input type="text" name="class" onChange={handleChange}/>{" "}
+        </label>
+        <label>
+          Quantity:
+          <input type="text" name="quantity" onChange={handleChange}/>{" "}
         </label>
         <label>
           Price:
-          <input type="text" name="price" />{" "}
+          <input type="text" name="price" onChange={handleChange}/>{" "}
         </label>
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" onClick={handleFormSubmit}/>
       </form>
     </div>
   );

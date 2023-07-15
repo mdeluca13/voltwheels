@@ -9,10 +9,11 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 //Importing pages:
+import Home from "./pages/Home"
 import Nav from "./components/Nav/index";
 // import Ads from "./pages/Ads";
 import Car from "./pages/Car";
-import FAQ from "./pages/FAQ";
+// import FAQ from "./pages/FAQ";
 import SaleForm from "./pages/SaleForm";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
@@ -47,12 +48,12 @@ export default function App() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="/Home" element={<Nav />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/Signup" element={<Signup />}></Route>
-          {/* <Route path="./Ads" element={<Ads />}></Route> */}
+          {/* <Route path="./Ad" element={<Ads />}></Route> */}
           <Route path="/Car" element={<Car />}></Route>
-          <Route path="/FAQ" element={<FAQ />}></Route>
+          {/* <Route path="/FAQ" element={<FAQ />}></Route> */}
           <Route path="/OrderHistory" element={<OrderHistory />}></Route>
           <Route path="/Success" element={<Success />}></Route>
           <Route path="/SaleForm" element={<SaleForm />}></Route>

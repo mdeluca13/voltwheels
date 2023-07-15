@@ -18,6 +18,7 @@ export const QUERY_CAR = gql`
       color
       range
       trim
+      class
       extra
       image
       price
@@ -36,6 +37,7 @@ export const QUERY_ALL_CARS = gql`
       color
       range
       trim
+      class
       extra
       image
       price
@@ -49,6 +51,7 @@ export const QUERY_USER = gql`
     user {
       firstName
       lastName
+      email
       orders {
         _id
         purchaseDate

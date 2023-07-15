@@ -27,12 +27,16 @@ const carSchema = new Schema({
     type: String,
     required: true
   },
+  class: {
+    type: String,
+    required: true
+  },
   extra: {
     type: String
   },
   image: {
     type: String,
-    required: true
+    // required: true
   },
   price: {
     type: Number,
@@ -43,12 +47,12 @@ const carSchema = new Schema({
     min: 0,
     default: 1
   },
-  user: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
-  ]
+  // user: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'User'
+  //   }
+  // ]
 });
 
 const Car = mongoose.model('Car', carSchema);

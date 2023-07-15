@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Nav from "../components/Nav/index";
 // import Login from "./Login";
 // import SignUp from "./Signup";
-import Ads from "./Ad";
+import Ads from "./Ads";
 import Car from "./Car";
 import FAQ from "./FAQ";
 import OrderHistory from "./OrderHistory";
@@ -16,7 +16,7 @@ export function AppContainer() {
   const [currentPage, setCurrentPage] = useState("Home");
   const renderPage = () => {
     if (currentPage === "Home") {
-      return <CarList />;
+      return <Home />;
     }
     if (currentPage === "Ads") {
       return <Ads />;
