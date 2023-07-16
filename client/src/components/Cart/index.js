@@ -58,6 +58,7 @@ const Cart = () => {
     getCheckout({
       variables: { cars: carIds },
     });
+    console.log('click')
   }
 
   if (!state.cartOpen) {

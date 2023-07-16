@@ -12,8 +12,8 @@
 // `;
 
 // export const ADD_ORDER = gql`
-//   mutation addOrder($products: [ID]!) {
-//     addOrder(products: $products) {
+//   mutation addOrder($cars: [ID]!) {
+//     addOrder(cars: $cars) {
 //       purchaseDate
 //       cars {
 //         _id

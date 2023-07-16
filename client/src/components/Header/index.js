@@ -181,6 +181,9 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
+              <Link className="btn btn-lg btn-info m-2" to="/orderhistory">
+                {Auth.getProfile().data.username}'s orders
+              </Link>
               <Link className="btn btn-lg btn-info m-2" to="/me">
                 {Auth.getProfile().data.username}'s ads
               </Link>

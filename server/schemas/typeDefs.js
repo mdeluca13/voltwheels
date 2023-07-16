@@ -110,7 +110,7 @@ module.exports = typeDefs;
 //     car(_id: ID!): Car
 //     user: User
 //     order(_id: ID!): Order
-//     checkout(products: [ID]!): Checkout
+//     checkout(cars: [ID]!): Checkout
 //   }
 
 //   type Mutation {

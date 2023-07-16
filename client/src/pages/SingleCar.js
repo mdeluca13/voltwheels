@@ -1,11 +1,21 @@
-import React from 'react';
-
-// Import the `useParams()` hook
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_SINGLE_CAR } from '../utils/queries';
 
-const SingleCar = () => {
+import Cart from '../components/Cart';
+import { useStoreContext } from '../utils/GlobalState';
+import {
+  REMOVE_FROM_CART,
+  UPDATE_CART_QUANTITY,
+  ADD_TO_CART,
+  UPDATE_CARS,
+} from '../utils/actions';
+import { QUERY_SINGLE_CAR } from '../utils/queries';
+import { idbPromise } from '../utils/helpers';
+
+function SingleCar() {
+  const [state, dispatch] = useStoreContext();
+
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { carId } = useParams();
 
@@ -15,36 +25,121 @@ const SingleCar = () => {
   });
 
   const car = data?.car || {};
+  const { cart } = state;
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const addToCart = () => {
+    const itemInCart = cart.find((cartItem) => cartItem._id === carId);
+    if (itemInCart) {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: carId,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      });
+      idbPromise('cart', 'put', {
+        ...itemInCart,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      });
+    } else {
+      dispatch({
+        type: ADD_TO_CART,
+        car: { ...car, purchaseQuantity: 1 },
+      });
+      idbPromise('cart', 'put', { ...car, purchaseQuantity: 1 });
+    }
+  };
+
+  const removeFromCart = () => {
+    dispatch({
+      type: REMOVE_FROM_CART,
+      _id: car._id,
+    });
+
+    idbPromise('cart', 'delete', { ...car });
+  };
+
   return (
-    <div className="my-3">
-      <h3 className="card-header bg-dark text-light p-2 m-0">
-        {car.seller} <br />
-        <span style={{ fontSize: '1rem' }}>
-          is selling a {car.color} {car.year} {car.make} {car.model} for ${car.price}
-        </span>
-      </h3>
-      <div className="bg-light py-4">
-        <blockquote
-          className="p-4"
-          style={{
-            fontSize: '1.5rem',
-            fontStyle: 'italic',
-            border: '2px dotted #1a1a1a',
-            lineHeight: '1.5',
-          }}
-        >
-          {car.color} {car.year} {car.make} {car.model} {car.range} {car.trim} {car.extra} {car.image} ${car.price}
-        </blockquote>
-      </div>
-    </div>
+    <>
+      {car && cart ? (
+        <div className="container my-1">
+          <Link to="/">← Back to Cars</Link>
+
+          <h2>{car.make}</h2>
+
+          <p>{car.model}</p>
+
+          <p>
+            <strong>Price:</strong>${car.price}{' '}
+            <button onClick={addToCart}>Add to Cart</button>
+            <button
+              disabled={!cart.find((p) => p._id === car._id)}
+              onClick={removeFromCart}
+            >
+              Remove from Cart
+            </button>
+          </p>
+
+          {/* <img
+            src={`/images/${currentCar.image}`}
+            alt={currentCar.name}
+          /> */}
+        </div>
+      ) : null}
+      {loading ? <p>Loading...</p> : null}
+      <Cart />
+    </>
   );
-};
+}
 
 export default SingleCar;
+
+
+// import React from 'react';
+
+// // Import the `useParams()` hook
+// import { useParams } from 'react-router-dom';
+// import { useQuery } from '@apollo/client';
+// import { QUERY_SINGLE_CAR } from '../utils/queries';
+
+// const SingleCar = () => {
+//   // Use `useParams()` to retrieve value of the route parameter `:profileId`
+//   const { carId } = useParams();
+
+//   const { loading, data } = useQuery(QUERY_SINGLE_CAR, {
+//     // pass URL parameter
+//     variables: { carId: carId },
+//   });
+
+//   const car = data?.car || {};
+
+//   if (loading) {
+//     return <div>Loading...</div>;
+//   }
+//   return (
+//     <div className="my-3">
+//       <h3 className="card-header bg-dark text-light p-2 m-0">
+//         {car.seller} <br />
+//         <span style={{ fontSize: '1rem' }}>
+//           is selling a {car.color} {car.year} {car.make} {car.model} for ${car.price}
+//         </span>
+//       </h3>
+//       <div className="bg-light py-4">
+//         <blockquote
+//           className="p-4"
+//           style={{
+//             fontSize: '1.5rem',
+//             fontStyle: 'italic',
+//             border: '2px dotted #1a1a1a',
+//             lineHeight: '1.5',
+//           }}
+//         >
+//           {car.color} {car.year} {car.make} {car.model} {car.range} {car.trim} {car.extra} {car.image} ${car.price}
+//         </blockquote>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SingleCar;
 
 
 
@@ -60,16 +155,16 @@ export default SingleCar;
 //   ADD_TO_CART,
 //   UPDATE_CARS,
 // } from '../utils/actions';
-// import { QUERY_CARS } from '../utils/queries';
+// import { QUERY_SINGLE_CAR } from '../utils/queries';
 // import { idbPromise } from '../utils/helpers';
 
-// function IndividualCar() {
+// function SingleCar() {
 //   const [state, dispatch] = useStoreContext();
 //   const { id } = useParams();
 
 //   const [currentCar, setCurrentCar] = useState({});
 
-//   const { loading, data } = useQuery(QUERY_CARS);
+//   const { loading, data } = useQuery(QUERY_SINGLE_CAR);
 
 //   const { cars, cart } = state;
 
@@ -151,19 +246,19 @@ export default SingleCar;
 //             </button>
 //           </p>
 
-//           <img
+//           {/* <img
 //             src={`/images/${currentCar.image}`}
 //             alt={currentCar.make}
-//           />
+//           /> */}
 //         </div>
 //       ) : null}
 //       {loading ? <p>Loading...</p> : null}
-//       {/* <Cart /> */}
+//       <Cart />
 //     </>
 //   );
 // }
 
-// export default IndividualCar;
+// export default SingleCar;
 
 // import React, { useEffect, useState } from 'react';
 // import { Link, useParams } from 'react-router-dom';

@@ -217,7 +217,7 @@ const CarForm = () => {
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
-      {/* <Cart /> */}
+      <Cart />
     </div>
   );
 };

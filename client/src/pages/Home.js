@@ -26,7 +26,7 @@ const Home = () => {
               title="Cars for Sale"
             />
           )}
-          {/* <Cart /> */}
+          <Cart />
         </div>
       </div>
     </main>

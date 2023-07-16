@@ -54,13 +54,13 @@ export default Success;
 //   useEffect(() => {
 //     async function saveOrder() {
 //       const order = await idbPromise('order', 'get');
-//       const products = order.map((item) => item._id);
+//       const cars = order.map((item) => item._id);
 
-//       if (products.length) {
-//         const { data } = await addOrder({ variables: { products } });
-//         const productData = data.addOrder.products;
+//       if (cars.length) {
+//         const { data } = await addOrder({ variables: { cars } });
+//         const cartData = data.addOrder.cars;
 
-//         productData.forEach((item) => {
+//         cartData.forEach((item) => {
 //           idbPromise('order', 'delete', item);
 //         });
 //       }
