@@ -7,12 +7,12 @@ export function pluralize(name, count) {
 
 export function idbPromise(storeName, method, object) {
   return new Promise((resolve, reject) => {
-    const request = window.indexedDB.open('shop-shop', 1);
+    const request = window.indexedDB.open('volt', 1);
     let db, tx, store;
     request.onupgradeneeded = function(e) {
       const db = request.result;
       db.createObjectStore('cars', { keyPath: '_id' });
-      db.createObjectStore('order', { keyPath: '_id' });
+      db.createObjectStore('cart', { keyPath: '_id' });
     };
 
     request.onerror = function(e) {

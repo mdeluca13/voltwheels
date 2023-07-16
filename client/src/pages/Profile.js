@@ -1,8 +1,7 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
-import CarForm from '../components/CarForm';
+import Cart from '../components/Cart';
 import CarList from '../components/CarList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -50,6 +49,7 @@ const Profile = () => {
             showUsername={false}
           />
         </div>
+        {/* <Cart /> */}
       </div>
     </div>
   );

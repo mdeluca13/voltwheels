@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-
+import Cart from '../components/Cart';
 import { ADD_CAR } from '../utils/mutations';
 // import { QUERY_CARS, QUERY_ME } from '../../utils/queries';
 
@@ -217,6 +217,7 @@ const CarForm = () => {
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
+      {/* <Cart /> */}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-.order {
+.cart {
   position: fixed;
   top: 0;
   right: 0;
@@ -12,14 +12,14 @@
   border-bottom-left-radius: .5rem;
 }
 
-.order h2 {
+.cart h2 {
   font-size: 1.5rem;
   border-bottom: 1px solid var(--dark);
   padding-bottom: .5rem;
   margin: 1rem 0;
 }
 
-.order .close {
+.cart .close {
   position: absolute;
   top: .5rem;
   right: .5rem;
@@ -27,11 +27,11 @@
   color: var(--tertiary);
 }
 
-.order .close:hover {
+.cart .close:hover {
   text-decoration: underline;
 }
 
-.order-closed {
+.cart-closed {
   position: fixed;
   top: 2%;
   right: 1%;
@@ -44,23 +44,23 @@
   height: 50px;
 }
 
-.order-closed:hover {
+.cart-closed:hover {
   transform: rotate(8deg);
 }
 
-.order img {
+.cart img {
   width: 70px;
   margin-right: 1rem;
 }
 
-.order input {
+.cart input {
   width: 50px;
   padding: 0;
   margin: 0 .5rem 1rem 0;
 }
 
 @media screen and (max-width: 768px) {
-  .order {
+  .cart {
     position: relative;
     max-width: 100%;
     max-height: auto;
@@ -68,7 +68,7 @@
     background-color: inherit;
   }
 
-  .order-closed {
+  .cart-closed {
     position: relative;
     margin: 0 auto;
   }

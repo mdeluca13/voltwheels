@@ -3,15 +3,15 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-import OrderItem from '../OrderItem';
+import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_ORDER, ADD_MULTIPLE_TO_ORDER } from '../../utils/actions';
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
-const Order = () => {
+const Cart = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
@@ -24,45 +24,45 @@ const Order = () => {
   }, [data]);
 
   useEffect(() => {
-    async function getOrder() {
-      const order = await idbPromise('order', 'get');
-      dispatch({ type: ADD_MULTIPLE_TO_ORDER, products: [...order] });
+    async function getCart() {
+      const cart = await idbPromise('cart', 'get');
+      dispatch({ type: ADD_MULTIPLE_TO_CART, cars: [...cart] });
     }
 
-    if (!state.order.length) {
-      getOrder();
+    if (!state.cart.length) {
+      getCart();
     }
-  }, [state.order.length, dispatch]);
+  }, [state.cart.length, dispatch]);
 
-  function toggleOrder() {
-    dispatch({ type: TOGGLE_ORDER });
+  function toggleCart() {
+    dispatch({ type: TOGGLE_CART });
   }
 
   function calculateTotal() {
     let sum = 0;
-    state.order.forEach((item) => {
+    state.cart.forEach((item) => {
       sum += item.price * item.purchaseQuantity;
     });
     return sum.toFixed(2);
   }
 
   function submitCheckout() {
-    const productIds = [];
+    const carIds = [];
 
-    state.order.forEach((item) => {
+    state.cart.forEach((item) => {
       for (let i = 0; i < item.purchaseQuantity; i++) {
-        productIds.push(item._id);
+        carIds.push(item._id);
       }
     });
 
     getCheckout({
-      variables: { products: productIds },
+      variables: { cars: carIds },
     });
   }
 
-  if (!state.orderOpen) {
+  if (!state.cartOpen) {
     return (
-      <div className="order-closed" onClick={toggleOrder}>
+      <div className="cart-closed" onClick={toggleCart}>
         <span role="img" aria-label="trash">
           🛒
         </span>
@@ -71,15 +71,15 @@ const Order = () => {
   }
 
   return (
-    <div className="order">
-      <div className="close" onClick={toggleOrder}>
+    <div className="cart">
+      <div className="close" onClick={toggleCart}>
         [close]
       </div>
-      <h2>Order</h2>
-      {state.order.length ? (
+      <h2>Shopping Cart</h2>
+      {state.cart.length ? (
         <div>
-          {state.order.map((item) => (
-            <OrderItem key={item._id} item={item} />
+          {state.cart.map((item) => (
+            <CartItem key={item._id} item={item} />
           ))}
 
           <div className="flex-row space-between">
@@ -97,11 +97,11 @@ const Order = () => {
           <span role="img" aria-label="shocked">
             😱
           </span>
-          You haven't added anything to your order yet!
+          You haven't added anything to your cart yet!
         </h3>
       )}
     </div>
   );
 };
 
-export default Order;
+export default Cart;

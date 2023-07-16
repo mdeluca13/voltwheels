@@ -2,8 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 
 import CarList from '../components/CarList';
-import CarForm from '../components/CarForm';
-
+import Cart from "../components/Cart";
 import { QUERY_CARS } from '../utils/queries';
 
 const Home = () => {
@@ -27,6 +26,7 @@ const Home = () => {
               title="Cars for Sale"
             />
           )}
+          {/* <Cart /> */}
         </div>
       </div>
     </main>
@@ -34,6 +34,24 @@ const Home = () => {
 };
 
 export default Home;
+
+// import React from "react";
+// import CarList from "../components/CarList";
+// import Cart from "../components/Cart";
+
+// const Home = () => {
+//   return (
+//     <div className="container">
+//       <CarList />
+//       <Cart />
+//     </div>
+//   );
+// };
+
+// export default Home;
+
+
+
 
 // import React from "react";
 // import Header from "../components/Header/index";

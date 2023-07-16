@@ -1,18 +1,18 @@
 import React from 'react';
 import { useStoreContext } from "../../utils/GlobalState";
-import { REMOVE_FROM_ORDER, UPDATE_ORDER_QUANTITY } from "../../utils/actions";
+import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
-const OrderItem = ({ item }) => {
+const CartItem = ({ item }) => {
 
   const [, dispatch] = useStoreContext();
 
-  const removeFromOrder = item => {
+  const removeFromCart = item => {
     dispatch({
-      type: REMOVE_FROM_ORDER,
+      type: REMOVE_FROM_CART,
       _id: item._id
     });
-    idbPromise('order', 'delete', { ...item });
+    idbPromise('cart', 'delete', { ...item });
 
   };
 
@@ -20,18 +20,18 @@ const OrderItem = ({ item }) => {
     const value = e.target.value;
     if (value === '0') {
       dispatch({
-        type: REMOVE_FROM_ORDER,
+        type: REMOVE_FROM_CART,
         _id: item._id
       });
-      idbPromise('order', 'delete', { ...item });
+      idbPromise('cart', 'delete', { ...item });
 
     } else {
       dispatch({
-        type: UPDATE_ORDER_QUANTITY,
+        type: UPDATE_CART_QUANTITY,
         _id: item._id,
         purchaseQuantity: parseInt(value)
       });
-      idbPromise('order', 'put', { ...item, purchaseQuantity: parseInt(value) });
+      idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
 
     }
   }
@@ -57,7 +57,7 @@ const OrderItem = ({ item }) => {
           <span
             role="img"
             aria-label="trash"
-            onClick={() => removeFromOrder(item)}
+            onClick={() => removeFromCart(item)}
           >
             🗑️
           </span>
@@ -67,4 +67,4 @@ const OrderItem = ({ item }) => {
   );
 }
 
-export default OrderItem;
+export default CartItem;

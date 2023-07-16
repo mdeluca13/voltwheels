@@ -201,3 +201,11 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($cars: [ID]!) {
+    checkout(cars: $cars) {
+      session
+    }
+  }
+`;

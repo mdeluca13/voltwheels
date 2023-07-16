@@ -131,23 +131,24 @@ export const ADD_CAR = gql`
   }
 `;
 
-// export const ADD_ORDER = gql`
-//   mutation addOrder($products: [ID]!) {
-//     addOrder(products: $products) {
-//       purchaseDate
-//       cars {
-//         _id
-//         make
-//         model
-//         year
-//         color
-//         range
-//         trim
-//         extra
-//         image
-//         price
-//         quantity
-//       }
-//     }
-//   }
-// `;
+export const ADD_ORDER = gql`
+  mutation addOrder($cars: [ID]!) {
+    addOrder(cars: $cars) {
+      purchaseDate
+      cars {
+        _id
+        make
+        model
+        year
+        color
+        range
+        trim
+        extra
+        image
+        price
+        quantity
+        seller
+      }
+    }
+  }
+`;

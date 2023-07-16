@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import CarForm from './pages/CarForm';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import NoMatch from './pages/NoMatch';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -76,6 +77,10 @@ function App() {
               <Route 
                 path="/cars/:carId" 
                 element={<SingleCar />}
+              />
+              <Route
+                path="*" 
+                element={<NoMatch />} 
               />
             </Routes>
           </div>
