@@ -37,11 +37,12 @@ const resolvers = {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ cars: args.cars });
       const line_items = [];
-
+      // const { cars } =  Car.find();
       const { cars } = await order.populate('cars');
 
       for (let i = 0; i < cars.length; i++) {
         const car = await stripe.cars.create({
+          // _id: cars[i].carIds,
           make: cars[i].make,
           model: cars[i].model,
           year: cars[i].year,
@@ -54,13 +55,13 @@ const resolvers = {
         });
 
         const price = await stripe.prices.create({
-          car: car.id,
+          car: car.carId,
           unit_amount: cars[i].price * 100,
           currency: 'usd',
         });
 
         line_items.push({
-          price: price.id,
+          price: price.carId,
           quantity: 1
         });
       }
