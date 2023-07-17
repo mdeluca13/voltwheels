@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { CloudinaryContext, Image } from 'cloudinary-react';
-import cloudinary from 'cloudinary-core';
 
 const App = () => {
   const [imageURL, setImageURL] = useState('');
+  const [formImageURL, setFormImageURL] = useState('');
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -22,28 +21,32 @@ const App = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setImageURL(data.secure_url);
-        console.log('Upload success:', data.secure_url);
+        const uploadedURL = data.secure_url;
+        setImageURL(uploadedURL);
+        setFormImageURL(uploadedURL);
+        console.log('Upload success:', uploadedURL);
       })
       .catch((error) => {
         console.log('Upload error:', error);
       });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+   //WOOHOOOO IMAGE URL BABYYYYY
+    console.log('Form submitted with image URL:', formImageURL);
+  };
+
   return (
     <div>
-      <input type="file" onChange={handleFileUpload} />
-
-      {imageURL && (
-        <CloudinaryContext cloudName="dewcgeq3o">
-          <Image publicId={imageURL} />
-        </CloudinaryContext>
-      )}
+      <form onSubmit={handleSubmit}>
+        <input type="file" onChange={handleFileUpload} />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 };
-
-
 
 export default function MyApp() {
   return <App />;
