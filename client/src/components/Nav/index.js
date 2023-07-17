@@ -39,7 +39,7 @@ function Nav({ currentPage, handlePageChange }) {
             <Link to="/login">Login</Link>
           </li>
           <li className="mx-1">
-            <Link to="/faq">FAQs</Link>
+            <Link to="/Faq">FAQs</Link>
           </li>
         </ul>
       );

@@ -14,7 +14,6 @@ import Nav from "./components/Nav/index";
 import Video from "./components/Video/index";
 // import Ads from "./pages/Ads";
 import Car from "./pages/Car";
-import FAQ from "./pages/FAQ";
 import SaleForm from "./pages/SaleForm";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
@@ -54,7 +53,6 @@ export default function App() {
           <Route path="/Signup" element={<Signup />}></Route>
           {/* <Route path="./Ads" element={<Ads />}></Route> */}
           <Route path="/Car" element={<Car />}></Route>
-          <Route path="/FAQ" element={<FAQ />}></Route>
           <Route path="/OrderHistory" element={<OrderHistory />}></Route>
           <Route path="/Success" element={<Success />}></Route>
           <Route path="/SaleForm" element={<SaleForm />}></Route>
