@@ -45,9 +45,10 @@ const client = new ApolloClient({
 
 export default function App() {
   return (
+
     <ApolloProvider client={client}>
       <Router>
-        <Nav />
+          <Nav />
         <Routes>
           <Route path="/" element={<Video />}></Route>
           <Route path="/login" element={<Login />}></Route>

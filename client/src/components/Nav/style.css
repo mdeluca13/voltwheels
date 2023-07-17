@@ -1,3 +1,8 @@
+nav {
+  z-index: 1;
+}
+
+
 .navBarLinks {
   display: flex;
   justify-content: center;
