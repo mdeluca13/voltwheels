@@ -2,6 +2,13 @@ nav {
   z-index: 1;
 }
 
+.flex-row{
+  display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 .navBarLinks {
   display: flex;
@@ -12,6 +19,8 @@ nav {
   /* margin-left: 60%; */
   float: inline-end !important;
 }
+
+
 @media (min-width: 992px) {
   #navbar {
     /* padding-top: 5px;

@@ -17,9 +17,6 @@ const Footer = () => {
             <img src="/icons/instagram.svg" alt="Instagram" />
           </a>
         </div>
-        <div className="footer-links">
-          <Link to="/Faq">About Us</Link>
-        </div>
         <p>© {new Date().getFullYear()} Volt Wheels. All rights reserved.</p>
       </div>
     </footer>
