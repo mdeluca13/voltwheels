@@ -11,7 +11,6 @@ const Home = () => {
       <Video />
       <CarList />
       <Order />
-      <Nav />
 
     </div>
   );

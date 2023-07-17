@@ -13,6 +13,7 @@ import { setContext } from "@apollo/client/link/context";
 import Nav from "./components/Nav/index";
 import Video from "./components/Video/index";
 import FAQ from "./components/FAQ/index";
+import Footer from "./components/Footer/index";
 // import Ads from "./pages/Ads";
 import Car from "./pages/Car";
 import SaleForm from "./pages/SaleForm";
@@ -60,6 +61,7 @@ export default function App() {
           <Route path="/SaleForm" element={<SaleForm />}></Route>
           <Route path="/Faq" element={<FAQ />}></Route>
         </Routes>
+        <Footer />
       </Router>
     </ApolloProvider>
   );
