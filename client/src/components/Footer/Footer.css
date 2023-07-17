@@ -1,0 +1,34 @@
+.footer {
+  background-color: var(--primary);
+
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-icons {
+  margin: 10px;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons img {
+  width: 30px; /* Adjust the size of the icons as needed */
+  height: 30px;
+  border-radius: 50%;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}

@@ -7,8 +7,8 @@ const { Provider } = StoreContext;
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useCarReducer({
     cars: [],
-    order: [],
-    orderOpen: false,
+    cart: [],
+    cartOpen: false,
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
@@ -19,3 +19,4 @@ const useStoreContext = () => {
 };
 
 export { StoreProvider, useStoreContext };
+
