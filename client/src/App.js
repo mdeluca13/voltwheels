@@ -14,10 +14,13 @@ import Login from './pages/Login';
 import SingleCar from './pages/SingleCar';
 import Profile from './pages/Profile';
 import CarForm from './pages/CarForm';
-import Header from './components/Header';
+import Nav from './components/Nav';
 import Footer from './components/Footer';
 import NoMatch from './pages/NoMatch';
 import OrderHistory from './pages/OrderHistory';
+import Video from "./components/Video/index";
+import FAQ from "./components/FAQ/index";
+import CarListPage from './pages/CarList';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -49,12 +52,16 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <StoreProvider>
-            <Header />
+            <Nav />
             <div className="container">
               <Routes>
                 <Route 
                   path="/"
                   element={<Home />}
+                />
+                <Route 
+                  path="/carlist"
+                  element={<CarListPage />}
                 />
                 <Route 
                   path="/login" 
@@ -83,6 +90,10 @@ function App() {
                 <Route 
                   path="/cars/:carId" 
                   element={<SingleCar />}
+                />
+                <Route
+                  path="*" 
+                  element={<FAQ />} 
                 />
                 <Route
                   path="*" 

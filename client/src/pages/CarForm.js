@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import Cart from '../components/Cart';
 import { ADD_CAR } from '../utils/mutations';
 // import { QUERY_CARS, QUERY_ME } from '../../utils/queries';
-
+import ImageUpload from '../components/Image';
 import Auth from '../utils/auth';
 
 const CarForm = () => {
@@ -198,7 +198,7 @@ const CarForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
-
+            <ImageUpload />
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
                 Submit
