@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -15,6 +16,9 @@ const Footer = () => {
           <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
             <img src="/icons/instagram.svg" alt="Instagram" />
           </a>
+        </div>
+        <div className="footer-links">
+          <Link to="/Faq">About Us</Link>
         </div>
         <p>© {new Date().getFullYear()} Volt Wheels. All rights reserved.</p>
       </div>
