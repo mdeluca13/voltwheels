@@ -25,7 +25,7 @@ const FAQ = () => {
   return (
     <div>
       {faqData.map((faq, index) => (
-        <div key={index}>
+        <div key={index} className="container my-1">
           <h3>{faq.question}</h3>
           <p>{faq.answer}</p>
         </div>
