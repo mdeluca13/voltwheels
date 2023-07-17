@@ -3,7 +3,7 @@ import React from 'react';
 const FAQ = () => {
   const faqData = [  {
     question: "What are the advantages of buying an electric car?",
-    answer: " Listing your car for sale is easy. First, create an account on our website. Then, click on "Sell Your Car" and follow the step-by-step process to provide all necessary details about your vehicle, including photos, description, and price."
+    answer: " Listing your car for sale is easy. First, create an account on our website. Then, click on 'Sell Your Car' and follow the step-by-step process to provide all necessary details about your vehicle, including photos, description, and price."
   },
   {
     question: "What information do I need to provide when listing my car for sale?",
