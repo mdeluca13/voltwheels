@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './FAQ.css';
 
 const FAQ = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const handleAccordionClick = (index) => {
+    setActiveIndex(index === activeIndex ? null : index);
+  };
+
+
   const faqData = [  {
     question: "What are the advantages of buying an electric car?",
     answer: " Listing your car for sale is easy. First, create an account on our website. Then, click on 'Sell Your Car' and follow the step-by-step process to provide all necessary details about your vehicle, including photos, description, and price."
@@ -20,14 +28,17 @@ const FAQ = () => {
   {
     question: "How can I delete or deactivate my listing if my car has been sold?",
     answer: "You can log in to your account, find the listing, and select the option to delete or deactivate the listing once your car has been sold."
-  },];
+  }];
 
   return (
-    <div>
+    <div className="faq-container">
+      <h1>Frequently Asked Questions</h1>
       {faqData.map((faq, index) => (
-        <div key={index} className="container my-1">
-          <h3>{faq.question}</h3>
-          <p>{faq.answer}</p>
+        <div key={index} className={`faq-item ${index === activeIndex ? 'active' : ''}`}>
+          <div className="faq-question" onClick={() => handleAccordionClick(index)}>
+            {faq.question}
+          </div>
+          {index === activeIndex && <div className="faq-answer">{faq.answer}</div>}
         </div>
       ))}
     </div>
