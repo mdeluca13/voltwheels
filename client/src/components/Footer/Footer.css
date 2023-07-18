@@ -2,11 +2,12 @@
   background-color: var(--primary);
 
   text-align: center;
-  position: fixed;
+  position: sticky;
   left: 0;
   bottom: 0;
   width: 100%;
   color: white;
+  padding: 1px;
 }
 
 .container {

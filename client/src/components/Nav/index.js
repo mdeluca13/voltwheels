@@ -33,7 +33,13 @@ function Nav({ currentPage, handlePageChange }) {
     } else {
       return (
         <ul className="flex-row">
-          <li className="mx-1">
+          <li>
+                <Link to="/aboutus">About Us</Link>
+            </li>
+            <li>
+                <Link to="/carlist">Cars for Sale</Link>
+            </li>
+            <li className="mx-1">
             <Link to="/signup">Signup</Link>
           </li>
           <li className="mx-1">

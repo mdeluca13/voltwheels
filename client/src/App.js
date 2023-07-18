@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import CarForm from './pages/CarForm';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import AboutUs from './components/AboutUs';
 import NoMatch from './pages/NoMatch';
 import OrderHistory from './pages/OrderHistory';
 import Video from "./components/Video/index";
@@ -55,49 +56,53 @@ function App() {
             <Nav />
             <div className="container">
               <Routes>
-                <Route 
+                <Route
                   path="/"
                   element={<Home />}
                 />
-                <Route 
+                <Route
+                  path="/aboutus"
+                  element={<AboutUs />}
+                />
+                <Route
                   path="/carlist"
                   element={<CarListPage />}
                 />
-                <Route 
-                  path="/login" 
+                <Route
+                  path="/login"
                   element={<Login />}
                 />
-                <Route 
-                  path="/signup" 
+                <Route
+                  path="/signup"
                   element={<Signup />}
                 />
                 <Route
                   path="/carform"
                   element={<CarForm />}
                 />
-                <Route 
-                  path="/orderhistory" 
+                <Route
+                  path="/orderhistory"
                   element={<OrderHistory />}
                 />
-                <Route 
-                  path="/me" 
+                <Route
+                  path="/me"
                   element={<Profile />}
                 />
-                <Route 
-                  path="/profiles/:username" 
+                <Route
+                  path="/profiles/:username"
                   element={<Profile />}
                 />
-                <Route 
-                  path="/cars/:carId" 
+                <Route
+                  path="/cars/:carId"
                   element={<SingleCar />}
                 />
                 <Route
-                  path="*" 
-                  element={<FAQ />} 
+                  path="*"
+                  element={<FAQ />}
                 />
                 <Route
-                  path="*" 
-                  element={<NoMatch />} 
+                  path="*"
+                  element={<NoMatch />}
                 />
               </Routes>
             </div>
@@ -165,44 +170,44 @@ export default App;
 //         <Header />
 //         <div className="container">
 //           <Routes>
-//             <Route 
+//             <Route
 //               path="/"
 //               element={<Home />}
 //             />
-//             <Route 
-//               path="/login" 
+//             <Route
+//               path="/login"
 //               element={<Login />}
 //             />
-//             <Route 
-//               path="/signup" 
+//             <Route
+//               path="/signup"
 //               element={<Signup />}
 //             />
-//             <Route 
-//               path="/me" 
+//             <Route
+//               path="/me"
 //               element={<Profile />}
 //             />
-//             <Route 
-//               path="/profiles/:username" 
+//             <Route
+//               path="/profiles/:username"
 //               element={<Profile />}
 //             />
-//             <Route 
-//               path="/carform" 
+//             <Route
+//               path="/carform"
 //               element={<CarForm />}
 //             />
-//             <Route 
-//               path="/cars/:carId" 
+//             <Route
+//               path="/cars/:carId"
 //               element={<SingleCar />}
 //             />
-//             {/* <Route 
-//               path="/orderhistory" 
+//             {/* <Route
+//               path="/orderhistory"
 //               element={<OrderHistory />}
 //             /> */}
-//             {/* <Route 
+//             {/* <Route
 //               path="/faq"
 //               element={<FAQ />}
 //             /> */}
-//             {/* <Route 
-//               path="/success" 
+//             {/* <Route
+//               path="/success"
 //               element={<Success />}
 //             /> */}
 //           </Routes>
