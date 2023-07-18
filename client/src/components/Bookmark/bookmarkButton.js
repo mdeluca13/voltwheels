@@ -20,7 +20,7 @@ if (user===null) {
     return (
         <p><span><a href='/login'>Log in to bookmark cars</a></span></p>);
     }
-    return <FindInitialState userId={user.userId} vehicleId={props.vehicleId}/>
+    return <FindInitialState userId={user.UserId} carId={props.carId}/>
 }
 
 
@@ -30,7 +30,7 @@ function FindInitialState(props) {
 
     const fetcher = url => fetch(url).then(r => r.json())
     const {data, error} =
-    useSWR('/server/users/${props.userId}/${props.vehicleId}',
+    useSWR('/server/users/${props.UserId}/${props.CarId}',
     fetcher)
 
     console.log("This vehicle has been bookmarked", data)
@@ -39,7 +39,7 @@ function FindInitialState(props) {
 
     BookmarkBool = data;
 
-    return <SetStateAndToggle BookmarkBool={BookmarkBool} userId={props.userId} vehicleId ={props.vehicleId}/>
+    return <SetStateAndToggle BookmarkBool={BookmarkBool} userId={props.UserId} carId ={props.carId}/>
 }
 
 function SetStateAndToggle(props) {
@@ -74,8 +74,8 @@ function SetStateAndToggle(props) {
     return (
         <button
               className={styles['bookmark-button']}
-              onClick={() => toggleBookmark(props.vehicleId)}
-              key={props.vehicleId}>
+              onClick={() => toggleBookmark(props.carId)}
+              key={props.carId}>
                 {bookmark === true ? currentlyBookmarked :
                 notCurrenlyBookmarked}
               </button>
