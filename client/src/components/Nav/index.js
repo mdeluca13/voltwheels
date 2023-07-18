@@ -48,6 +48,9 @@ function Nav({ currentPage, handlePageChange }) {
           <li className="mx-1">
             <Link to="/Faq">FAQs</Link>
           </li>
+          <li className="mx-1">
+            <Link to="/contactus">Contact Us</Link>
+          </li>
         </ul>
       );
     }

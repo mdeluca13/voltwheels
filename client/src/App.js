@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import CarForm from './pages/CarForm';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import ContactForm from './components/ContactForm';
 import AboutUs from './components/AboutUs';
 import NoMatch from './pages/NoMatch';
 import OrderHistory from './pages/OrderHistory';
@@ -99,6 +100,10 @@ function App() {
                 <Route
                   path="*"
                   element={<FAQ />}
+                />
+                <Route
+                  path="/contactus"
+                  element={<ContactForm />}
                 />
                 <Route
                   path="*"
