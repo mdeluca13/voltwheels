@@ -166,6 +166,34 @@ const resolvers = {
 
       return await Car.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
+    addBookmark: async (parent, { carId }, context) => {
+      if (context.user) {
+        
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { bookmarkedCars: car._id } }
+        );
+
+        return bookmarkedCars;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeBookmark: async (parent, { carId }, context) => {
+      if (context.user) {
+        // const car = await Car.findOneAndDelete({
+        //   bookmarkedCars: carId,
+        //   seller: context.user.username,
+        // });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { bookmarkedCars: car._id } }
+        );
+
+        return bookmarkedCars;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 

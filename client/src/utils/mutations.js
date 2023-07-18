@@ -152,3 +152,10 @@ export const ADD_ORDER = gql`
     }
   }
 `;
+
+export const ADD_BOOKMARK = gql`
+mutation addBookmark($user:)`
+
+
+export const REMOVE_BOOKMARK = gql`
+mutation removeBookmark ($)`

@@ -32,7 +32,7 @@ await Car.insertMany([
         trim: 'Ultimate',
         extra: 'all the things',
         image: '',
-        price: 1000000,
+        price: 10000,
         quantity: 1,
         seller: '64b299b4697fae56ea3af792',
         
