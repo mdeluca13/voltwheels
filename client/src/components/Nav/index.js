@@ -22,6 +22,12 @@ function Nav({ currentPage, handlePageChange }) {
           <li className="mx-1 navBarSpacing">
             <Link to="/carform">Add Car for Sale</Link>
           </li>
+          <li>
+            <Link to="/aboutus">About Us</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/contactform">Contact Us</Link>
+          </li>
           <li className="mx-1 navBarSpacing">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
@@ -41,6 +47,12 @@ function Nav({ currentPage, handlePageChange }) {
           </li>
           <li className="mx-1 .navbar-nav navBarSpacing">
             <Link to="/Faq">FAQs</Link>
+          </li>
+          <li>
+            <Link to="/aboutus">About Us</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/contactform">Contact Us</Link>
           </li>
         </ul>
       );
