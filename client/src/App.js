@@ -56,47 +56,48 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <StoreProvider>
             <Nav />
-            <div className="container">
+            <div className="app-container">
+            <div className="main-content">
               <Routes>
-                <Route 
+                <Route
                   path="/"
                   element={<Home />}
                 />
-                <Route 
+                <Route
                   path="/carlist"
                   element={<CarListPage />}
                 />
-                <Route 
-                  path="/login" 
+                <Route
+                  path="/login"
                   element={<Login />}
                 />
-                <Route 
-                  path="/signup" 
+                <Route
+                  path="/signup"
                   element={<Signup />}
                 />
                 <Route
                   path="/carform"
                   element={<CarForm />}
                 />
-                <Route 
-                  path="/orderhistory" 
+                <Route
+                  path="/orderhistory"
                   element={<OrderHistory />}
                 />
-                <Route 
-                  path="/me" 
+                <Route
+                  path="/me"
                   element={<Profile />}
                 />
-                <Route 
-                  path="/profiles/:username" 
+                <Route
+                  path="/profiles/:username"
                   element={<Profile />}
                 />
-                <Route 
-                  path="/cars/:carId" 
+                <Route
+                  path="/cars/:carId"
                   element={<SingleCar />}
                 />
                 <Route
-                  path="/faq" 
-                  element={<FAQ />} 
+                  path="/faq"
+                  element={<FAQ />}
                 />
                 <Route
                   path="/contactform"
@@ -107,12 +108,13 @@ function App() {
                   element={<AboutUs />}
                 />
                 <Route
-                  path="*" 
-                  element={<NoMatch />} 
+                  path="*"
+                  element={<NoMatch />}
                 />
               </Routes>
             </div>
             <Footer />
+            </div>
           </StoreProvider>
         </div>
       </Router>
@@ -176,44 +178,44 @@ export default App;
 //         <Header />
 //         <div className="container">
 //           <Routes>
-//             <Route 
+//             <Route
 //               path="/"
 //               element={<Home />}
 //             />
-//             <Route 
-//               path="/login" 
+//             <Route
+//               path="/login"
 //               element={<Login />}
 //             />
-//             <Route 
-//               path="/signup" 
+//             <Route
+//               path="/signup"
 //               element={<Signup />}
 //             />
-//             <Route 
-//               path="/me" 
+//             <Route
+//               path="/me"
 //               element={<Profile />}
 //             />
-//             <Route 
-//               path="/profiles/:username" 
+//             <Route
+//               path="/profiles/:username"
 //               element={<Profile />}
 //             />
-//             <Route 
-//               path="/carform" 
+//             <Route
+//               path="/carform"
 //               element={<CarForm />}
 //             />
-//             <Route 
-//               path="/cars/:carId" 
+//             <Route
+//               path="/cars/:carId"
 //               element={<SingleCar />}
 //             />
-//             {/* <Route 
-//               path="/orderhistory" 
+//             {/* <Route
+//               path="/orderhistory"
 //               element={<OrderHistory />}
 //             /> */}
-//             {/* <Route 
+//             {/* <Route
 //               path="/faq"
 //               element={<FAQ />}
 //             /> */}
-//             {/* <Route 
-//               path="/success" 
+//             {/* <Route
+//               path="/success"
 //               element={<Success />}
 //             /> */}
 //           </Routes>

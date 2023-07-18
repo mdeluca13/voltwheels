@@ -48,10 +48,10 @@ function Nav({ currentPage, handlePageChange }) {
           <li className="mx-1 .navbar-nav navBarSpacing">
             <Link to="/Faq">FAQs</Link>
           </li>
-          <li>
+          <li className="mx-1  .navbar-nav navBarSpacing">
             <Link to="/aboutus">About Us</Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1  .navbar-nav navBarSpacing">
             <Link to="/contactform">Contact Us</Link>
           </li>
         </ul>
