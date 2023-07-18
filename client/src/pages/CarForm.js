@@ -6,6 +6,7 @@ import { ADD_CAR } from '../utils/mutations';
 // import { QUERY_CARS, QUERY_ME } from '../../utils/queries';
 import ImageUpload from '../components/Image';
 import Auth from '../utils/auth';
+const formImageURL=require('../components/Image')
 
 const CarForm = () => {
   const [make, setMake] = useState('');
@@ -170,7 +171,7 @@ const CarForm = () => {
               <textarea
                 name="image"
                 placeholder="Add Image"
-                value={image}
+                value={ImageUpload(formImageURL)}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
