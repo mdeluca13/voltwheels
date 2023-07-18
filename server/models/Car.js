@@ -43,6 +43,11 @@ const carSchema = new Schema({
     type: String,
     required: true,
   },
+  bookmarked: {
+    type: Boolean,
+    required: true,
+    default: false,
+  }
 });
 
 const Car = model('Car', carSchema);
