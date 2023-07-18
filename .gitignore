@@ -1,4 +1,6 @@
 # Logs
+.client/build
+.client/photos
 logs
 *.log
 npm-debug.log*
