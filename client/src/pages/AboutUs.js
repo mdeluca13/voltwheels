@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className='container'>
   <section>
     <h2>One stop destination for electric cars!</h2>
     <p>

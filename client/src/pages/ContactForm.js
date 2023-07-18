@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactForm = () => {
   return (
-    <div>
+    <div className='container'>
       <h1>Contact Us</h1>
       <p>
         For any questions or inquiries, you can contact us through the following methods:
