@@ -2,7 +2,7 @@
   background-color: var(--primary);
 
   text-align: center;
-  position: sticky;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
