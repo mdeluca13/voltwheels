@@ -4,8 +4,8 @@ import { useMutation } from "@apollo/client";
 import { idbPromise } from "../utils/helpers";
 import Nav from "../pages/AppContainer";
 
-export function Ads({ currentPage, handlePageChange }) {
-  const [CarAds] = useMutation(ADS);
+export function Ads() {
+  const [Ads] = useMutation(ADS);
 
   useEffect(() => {
     async function Ads() {
