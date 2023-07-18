@@ -18,14 +18,17 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import NoMatch from './pages/NoMatch';
 import OrderHistory from './pages/OrderHistory';
-import Video from "./components/Video/index";
 import FAQ from "./components/FAQ/index";
 import CarListPage from './pages/CarList';
+import ContactForm from './pages/ContactForm';
+import AboutUs from './pages/AboutUs';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
+
+document.title = 'Voltwheels';
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
@@ -92,8 +95,16 @@ function App() {
                   element={<SingleCar />}
                 />
                 <Route
-                  path="*" 
+                  path="/faq" 
                   element={<FAQ />} 
+                />
+                <Route
+                  path="/contactform"
+                  element={<ContactForm />}
+                />
+                <Route
+                  path="/aboutus"
+                  element={<AboutUs />}
                 />
                 <Route
                   path="*" 

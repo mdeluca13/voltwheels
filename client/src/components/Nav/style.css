@@ -58,6 +58,10 @@ nav {
   }
 }
 
+.navBarSpacing {
+  padding: 30px;
+  list-style-type: none;
+}
 
 /* .navBarLinks {
   display: flex;

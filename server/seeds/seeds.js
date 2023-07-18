@@ -1,23 +1,23 @@
 const db = require('../config/connection');
-const {Ad, Bookmark, Car, User} = require('../models');
+
+const { Car, User} = require('../models');
 
 db.once('open', async () => {
+
     await User.deleteMany();
 
     await User.create({
-        firstName: 'Bob',
-        lastName: 'Smith',
+        username:'bobbyB',
         email: 'bob@email.com',
         password: 'bobsemail',
         id: '64b299b4697fae56ea3af792'
     });
 
     await User.create({
-        firstName: 'Billy',
-        lastName: 'Bob',
-        email: 'hick@redneck.com',
+        username: 'JohnWick',
+        email: 'john@badass.com',
         password: 'bacon4ever',
-        id: '67890'
+        id: '87b299b4697fae56ea3af749'
 });
 
 console.log('users created');
@@ -36,7 +36,7 @@ await Car.insertMany([
         image: '',
         price: 1000000,
         quantity: 1,
-        user: '12345'
+        seller: 'bobbyB',
     },
     {
         make: 'Tesla',
@@ -49,7 +49,7 @@ await Car.insertMany([
         image: '',
         price: 50000,
         quantity: 1,
-        user: '12345'
+        seller: 'bobbyB',
     },
     {
         make: 'Tesla',
@@ -62,7 +62,7 @@ await Car.insertMany([
         image: '',
         price: 80000,
         quantity: 1,
-        user: '12345'
+        seller: 'JohnWick',
     },
     {
         make: 'Hyundai',
@@ -75,7 +75,7 @@ await Car.insertMany([
         image: '',
         price: 51600,
         quantity: 1,
-        user: '67890'
+        seller: 'JohnWick',
     },
     {
         make: 'KIA',
@@ -88,7 +88,7 @@ await Car.insertMany([
         image: '',
         price: 53000,
         quantity: 1,
-        user: '67890'
+        seller: 'JohnWick',
     },
     {
         make: 'Mazda',
@@ -101,11 +101,8 @@ await Car.insertMany([
         image: '',
         price: 48000,
         quantity: 1,
-        user: '67890'
+        seller: 'JohnWick',
     },
-
 ]);
-
 console.log('Cars Seeded');
-
 });

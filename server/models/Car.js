@@ -23,7 +23,6 @@ const carSchema = new Schema({
   },
   trim: {
     type: String,
-    required: true,
   },
   extra: {
     type: String,

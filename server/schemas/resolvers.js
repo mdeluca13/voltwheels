@@ -8,8 +8,16 @@ const resolvers = {
     users: async () => {
       return User.find().populate('cars');
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('cars');
+    user: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate('orders.cars');
+
+        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+        return user;
+      }
+
+      throw new AuthenticationError('Not logged in');
     },
     cars: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -39,29 +47,29 @@ const resolvers = {
       const line_items = [];
       // const { cars } =  Car.find();
       const { cars } = await order.populate('cars');
-
+      console.log(cars)
       for (let i = 0; i < cars.length; i++) {
-        const car = await stripe.cars.create({
+        const car = await stripe.products.create({
           // _id: cars[i].carIds,
-          make: cars[i].make,
-          model: cars[i].model,
-          year: cars[i].year,
-          color: cars[i].color,
-          range: cars[i].range,
-          trim: cars[i].trim,
-          extra: cars[i].extra,
-          // images: [`${url}/images/${cars[i].image}`],
-          seller: cars[i].seller,
+          name: cars[i].make,
+          // model: cars[i].model,
+          // year: cars[i].year,
+          // color: cars[i].color,
+          // range: cars[i].range,
+          // trim: cars[i].trim,
+          // extra: cars[i].extra,
+          // // images: [`${url}/images/${cars[i].image}`],
+          // seller: cars[i].seller,
         });
 
         const price = await stripe.prices.create({
-          car: car.carId,
+          product: car.id,
           unit_amount: cars[i].price * 100,
           currency: 'usd',
         });
 
         line_items.push({
-          price: price.carId,
+          price: price.id,
           quantity: 1
         });
       }

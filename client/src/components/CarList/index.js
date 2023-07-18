@@ -43,7 +43,7 @@ const CarList = ({
             </Link>
           </div>
         ))}
-        <Cart />
+        {/* <Cart /> */}
     </div>
   );
 };
