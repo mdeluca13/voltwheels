@@ -23,7 +23,6 @@ const carSchema = new Schema({
   },
   trim: {
     type: String,
-    required: true,
   },
   extra: {
     type: String,
@@ -43,11 +42,7 @@ const carSchema = new Schema({
     type: String,
     required: true,
   },
-  bookmarked: {
-    type: Boolean,
-    required: true,
-    default: false,
-  }
+
 });
 
 const Car = model('Car', carSchema);
