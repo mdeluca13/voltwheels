@@ -31,15 +31,16 @@ function SingleCar(props) {
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === carId);
     if (itemInCart) {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: carId,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-      });
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-      });
+      alert("This car is already in your cart");
+      // dispatch({
+      //   type: UPDATE_CART_QUANTITY,
+      //   _id: carId,
+      //   purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      // });
+      // idbPromise('cart', 'put', {
+      //   ...itemInCart,
+      //   purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      // });
     } else {
       dispatch({
         type: ADD_TO_CART,
@@ -49,14 +50,14 @@ function SingleCar(props) {
     }
   };
 
-  const removeFromCart = () => {
-    dispatch({
-      type: REMOVE_FROM_CART,
-      _id: car._id,
-    });
+  // const removeFromCart = () => {
+  //   dispatch({
+  //     type: REMOVE_FROM_CART,
+  //     _id: car._id,
+  //   });
 
-    idbPromise('cart', 'delete', { ...car });
-  };
+  //   idbPromise('cart', 'delete', { ...car });
+  // };
 
   return (
     <>
@@ -73,12 +74,6 @@ function SingleCar(props) {
           <p>
             <strong>Price:</strong>${car.price}{' '}
             <button onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === car._id)}
-              onClick={removeFromCart}
-            >
-              Remove from Cart
-            </button>
           </p>
 
           {/* <img

@@ -7,7 +7,7 @@ import { QUERY_CARS } from '../utils/queries';
 const CarListPage = () => {
   const { loading, data } = useQuery(QUERY_CARS);
   const cars = data?.cars || [];
-
+  
   return (
     <main>
       <div className="flex-row justify-center">

@@ -50,16 +50,7 @@ const resolvers = {
       console.log(cars)
       for (let i = 0; i < cars.length; i++) {
         const car = await stripe.products.create({
-          // _id: cars[i].carIds,
           name: cars[i].make,
-          // model: cars[i].model,
-          // year: cars[i].year,
-          // color: cars[i].color,
-          // range: cars[i].range,
-          // trim: cars[i].trim,
-          // extra: cars[i].extra,
-          // // images: [`${url}/images/${cars[i].image}`],
-          // seller: cars[i].seller,
         });
 
         const price = await stripe.prices.create({
@@ -81,6 +72,10 @@ const resolvers = {
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`
       });
+      
+      // if (session.success_url) {
+      //   Car.findByIdAndUpdate(car.id, { $inc: { quantity: Math.abs(quantity) * -1 } }, { new: true });
+      // }
 
       return { session: session.id };
     }

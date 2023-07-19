@@ -10,9 +10,9 @@ function Nav({ currentPage, handlePageChange }) {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row navBarSpacing">
-            <li>
-                <Link to="/carlist">Cars for Sale</Link>
-            </li>
+          <li>
+              <Link to="/carlist">Cars for Sale</Link>
+          </li>
           <li className="mx-1 navBarSpacing">
             <Link to="/orderhistory">{Auth.getProfile().data.username}'s Orders</Link>
           </li>
@@ -22,10 +22,12 @@ function Nav({ currentPage, handlePageChange }) {
           <li className="mx-1 navBarSpacing">
             <Link to="/carform">Add Car for Sale</Link>
           </li>
-          <li>
+
+
+          <li className="mx-1 navBarSpacing">
             <Link to="/aboutus">About Us</Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 navBarSpacing">
             <Link to="/contactform">Contact Us</Link>
           </li>
           <li className="mx-1 navBarSpacing">
@@ -48,10 +50,10 @@ function Nav({ currentPage, handlePageChange }) {
           <li className="mx-1 .navbar-nav navBarSpacing">
             <Link to="/Faq">FAQs</Link>
           </li>
-          <li>
+          <li className="mx-1 .navbar-nav navBarSpacing">
             <Link to="/aboutus">About Us</Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 navBarSpacing">
             <Link to="/contactform">Contact Us</Link>
           </li>
         </ul>

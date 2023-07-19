@@ -11,7 +11,7 @@ const Main = () => {
         <Link to="/carlist">
           <div className="content">
             <h1>Get Started</h1>
-            <p>To the world of Electric Cars. Explore Now...</p>
+            <p>The World of Electric Cars is waiting for you. Explore Now...</p>
         </div>
         </Link>
         

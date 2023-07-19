@@ -16,28 +16,28 @@ const CartItem = ({ item }) => {
 
   };
 
-  const onChange = (e) => {
-    const value = e.target.value;
-    if (value === '0') {
-      dispatch({
-        type: REMOVE_FROM_CART,
-        _id: item._id
-      });
-      idbPromise('cart', 'delete', { ...item });
+  // const onChange = (e) => {
+  //   const value = e.target.value;
+  //   if (value === '0') {
+  //     dispatch({
+  //       type: REMOVE_FROM_CART,
+  //       _id: item._id
+  //     });
+  //     idbPromise('cart', 'delete', { ...item });
 
-    } else {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: item._id,
-        purchaseQuantity: parseInt(value)
-      });
-      idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
+  //   } else {
+  //     dispatch({
+  //       type: UPDATE_CART_QUANTITY,
+  //       _id: item._id,
+  //       purchaseQuantity: parseInt(value)
+  //     });
+  //     idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
 
-    }
-  }
+  //   }
+  // }
 
   return (
-    <div className="flex-row">
+    <div className="">
       <div>
         {/* <img
           src={`/images/${item.image}`}
@@ -45,15 +45,7 @@ const CartItem = ({ item }) => {
         /> */}
       </div>
       <div>
-        <div>{item.make} {item.model}, ${item.price}</div>
-        <div>
-          <span>Qty:</span>
-          <input
-            type="number"
-            placeholder="1"
-            value={item.purchaseQuantity}
-            onChange={onChange}
-          />
+        <div className="cartLineItem">{item.make} {item.model}: ${item.price}
           <span
             role="img"
             aria-label="trash"
@@ -61,6 +53,15 @@ const CartItem = ({ item }) => {
           >
             🗑️
           </span>
+        </div>
+        <div>
+          {/* <span>Qty:</span> */}
+          {/* <input
+            type="number"
+            placeholder="1"
+            value={item.purchaseQuantity}
+            onChange={onChange}
+          /> */}
         </div>
       </div>
     </div>
