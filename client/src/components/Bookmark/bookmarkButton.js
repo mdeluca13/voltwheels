@@ -9,18 +9,29 @@ import { useQuery } from '@apollo/client';
 
 
 function BookmarkButton(props) {
-    const [user, setUser] = useState();
+    // const [user, setUser] = useState();
 
 
     // useEffect(() => {
-        // const userLoggedIn = localStorage.getItem('id_token');
-        // console.log(userLoggedIn);
-        // if (userLoggedIn) {
-        //     const userData = Auth.getProfile(userLoggedIn)
-        //     console.log(userData);
-        //     setUser(userData.data);
-        // }
-    // }, []);
+    //     const userLoggedIn = localStorage.getItem('id_token');
+    //     // console.log(userLoggedIn);
+    //     if (userLoggedIn) {
+    //         const userData = Auth.getProfile(userLoggedIn)
+    //         console.log(userData);
+    //         setUser(userData.data);
+    //     }
+    const user = useState(() => {
+        const userLoggedIn = localStorage.getItem('id_token');
+        if (userLoggedIn) {
+            const userData = Auth.getProfile(userLoggedIn)
+            return userData.data
+        }
+        return null
+    });
+    const {loading, data} = useQuery(QUERY_USER, {
+        variables: {username: user.username}
+    })
+    
 
 
     if (user === null) {
@@ -43,7 +54,6 @@ function SetStateAndToggle(props) {
         variables: {username: user.username}
     })
     
-    console.log(data);
     const currentlyBookmarked = <FontAwesomeIcon icon={faHeart} />
 
     const notCurrenlyBookmarked = <FontAwesomeIcon icon={faHeartBroken} />

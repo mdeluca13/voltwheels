@@ -14,7 +14,7 @@ import { QUERY_SINGLE_CAR } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import {BookmarkButton} from '../components/Bookmark/bookmarkButton';
 
-function SingleCar() {
+function SingleCar(props) {
   const [state, dispatch] = useStoreContext();
 
   const id = document.location.pathname.split('/')[2]
