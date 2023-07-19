@@ -3,49 +3,65 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
 import Auth from '../../utils/auth';
 import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '../../utils/mutations';
+import { QUERY_USER } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 
 
 function BookmarkButton(props) {
     const [user, setUser] = useState();
 
-    console.log(props)
 
-    useEffect(() => {
-        const userLoggedIn = localStorage.getItem('id_token');
-        if (userLoggedIn) {
-            const userData = Auth.getProfile(userLoggedIn)
-            setUser(userData.data);
-        }
-    }, []);
+    // useEffect(() => {
+        // const userLoggedIn = localStorage.getItem('id_token');
+        // console.log(userLoggedIn);
+        // if (userLoggedIn) {
+        //     const userData = Auth.getProfile(userLoggedIn)
+        //     console.log(userData);
+        //     setUser(userData.data);
+        // }
+    // }, []);
 
 
     if (user === null) {
         return (
             <p><span><a href='/login'>Log in to bookmark cars</a></span></p>);
     }
-   return <SetStateAndToggle userId={user._id} carId={props.carId} />
+   return <SetStateAndToggle carId={props.carId} />
 }
 
 function SetStateAndToggle(props) {
+    const [user, setUser] = useState(() => {
+        const userLoggedIn = localStorage.getItem('id_token');
+        if (userLoggedIn) {
+            const userData = Auth.getProfile(userLoggedIn)
+            return userData.data
+        }
+        return null
+    });
+    const {loading, data} = useQuery(QUERY_USER, {
+        variables: {username: user.username}
+    })
     const currentlyBookmarked = <FontAwesomeIcon icon={faHeart} />
 
     const notCurrenlyBookmarked = <FontAwesomeIcon icon={faHeartBroken} />
 
-    const [user, setUser] = useState();
 
-    console.log(props)
+    console.log(loading)
+    console.log(data)
 
-    useEffect(() => {
-        const userLoggedIn = localStorage.getItem('id_token');
-        if (userLoggedIn) {
-            const userData = Auth.getProfile(userLoggedIn)
-            setUser(userData.data);
-        }
-    }, []);
+    // useEffect(() => {
+    //     const userLoggedIn = localStorage.getItem('id_token');
+    //     if (userLoggedIn) {
+    //         const userData = Auth.getProfile(userLoggedIn)
+    //         setUser(userData.data);
+    //     }
+    // }, []);
 
     const carId = props.carId
-    const bookmarked = user.find((bookmarkedCars) => bookmarkedCars._id === carId)
+    // What needs to be fixed is the use of bookedmarked cars instead of cars column
+    // bookmarked cars is returning null instead of an Empty Array
+    const bookmarked = data?.user.cars.filter((bookmarkedCars) => bookmarkedCars._id === carId)
 
     // need the code to tell whether or not the carId is within the bookmark array of the logged in user. 
     // if the car id is in the array display the filled in heart icon and when clicked it will remove the carid from array.
@@ -67,12 +83,17 @@ function SetStateAndToggle(props) {
     
 
     return (
+        <>
+        {loading ? <h1>Loading</h1> : (
         <button
-            onClick={() => toggleBookmark(props.carId)}
-            key={props.carId}>
-            {bookmarked === true ? notCurrenlyBookmarked :
-                currentlyBookmarked}
-        </button>
+        onClick={() => toggleBookmark(props.carId)}
+        key={props.carId}>
+        {bookmarked === true ?  currentlyBookmarked:
+           notCurrenlyBookmarked }
+    </button>
+        )}
+
+        </>
     )};
 
 

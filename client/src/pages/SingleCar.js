@@ -14,8 +14,12 @@ import { QUERY_SINGLE_CAR } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import {BookmarkButton} from '../components/Bookmark/bookmarkButton';
 
-function SingleCar(props) {
+function SingleCar() {
   const [state, dispatch] = useStoreContext();
+
+  const id = document.location.pathname.split('/')[2]
+
+  console.log(id)
 
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { carId } = useParams();
@@ -65,7 +69,7 @@ function SingleCar(props) {
         <div className="container my-1">
           <Link to="/">← Back to Cars</Link>
 
-        <BookmarkButton carId={props.carId}/>
+        <BookmarkButton carId={id}/>
 
           <h2>{car.make}</h2>
 

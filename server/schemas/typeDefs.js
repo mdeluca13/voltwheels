@@ -7,6 +7,7 @@ const typeDefs = gql`
     email: String
     password: String
     cars: [Car]!
+    bookedmarkCars: [Car]
   }
 
   type Car {

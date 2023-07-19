@@ -18,6 +18,7 @@ const CarList = ({
       {cars &&
         cars.map((car) => (
           <div key={car._id} className="card mb-3">
+            {console.log(car._id)}
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
                   <span style={{ fontSize: '1rem' }}>

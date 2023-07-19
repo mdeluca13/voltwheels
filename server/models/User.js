@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const Order = require('./Order');
+// const Order = require('./Order');
 
 const userSchema = new Schema({
   username: {
@@ -32,7 +32,7 @@ const userSchema = new Schema({
       ref: 'Car',
     },
   ],
-  orders: [Order.schema]
+  // orders: [Order.schema]
 });
 
 userSchema.pre('save', async function (next) {
