@@ -1,7 +1,7 @@
 .cart {
-  position: fixed;
-  top: 0;
-  right: 0;
+  position: absolute;
+  top: 20px;
+  left: 200px;
   min-width: 20%;
   max-width: 30%;
   max-height: 60%;
@@ -23,6 +23,7 @@
   position: absolute;
   top: .5rem;
   right: .5rem;
+  left: 200px;
   cursor: pointer;
   color: var(--tertiary);
 }
@@ -32,9 +33,9 @@
 }
 
 .cart-closed {
-  position: fixed;
+  position: absolute;
   top: 2%;
-  right: 1%;
+  left: 200px;
   font-size: 2rem;
   cursor: pointer;
   background-color: var(--secondary);
@@ -61,15 +62,20 @@
 
 @media screen and (max-width: 768px) {
   .cart {
-    position: relative;
+    position: absolute;
+    top: 2%;
+    left: 200px;
     max-width: 100%;
     max-height: auto;
     box-shadow: none;
-    background-color: inherit;
+    background-color: white;
+
+
   }
 
   .cart-closed {
-    position: relative;
-    margin: 0 auto;
+    position: absolute;
+    top: 2%;
+    left: 200px;
   }
 }

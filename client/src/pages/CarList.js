@@ -7,16 +7,16 @@ import { QUERY_CARS } from '../utils/queries';
 const CarListPage = () => {
   const { loading, data } = useQuery(QUERY_CARS);
   const cars = data?.cars || [];
-
+  
   return (
     <main>
       <div className="flex-row justify-center">
         <div
-          className="col-12 col-md-10 mb-3 p-3"
+          className="b"
           style={{ border: '1px dotted #1a1a1a' }}
         >
         </div>
-        <div className="col-12 col-md-8 mb-3">
+        <div className="b">
           {loading ? (
             <div>Loading...</div>
           ) : (

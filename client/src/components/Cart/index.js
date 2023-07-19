@@ -41,7 +41,7 @@ const Cart = () => {
   function calculateTotal() {
     let sum = 0;
     state.cart.forEach((item) => {
-      sum += item.price * item.purchaseQuantity;
+      sum += item.price * item.quantity;
     });
     return sum.toFixed(2);
   }
@@ -94,12 +94,12 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <h3>
+        <h6>
           <span role="img" aria-label="shocked">
             😱
           </span>
           You haven't added anything to your cart yet!
-        </h3>
+        </h6>
       )}
     </div>
   );

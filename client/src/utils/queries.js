@@ -141,6 +141,25 @@ export const QUERY_USER = gql`
         image
         price
         quantity
+        seller
+      }
+      orders {
+        _id
+        purchaseDate
+        cars {
+          _id
+        make
+        model
+        year
+        color
+        range
+        trim
+        extra
+        image
+        price
+        quantity
+        seller
+        }
       }
     }
   }

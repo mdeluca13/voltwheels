@@ -18,14 +18,18 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import NoMatch from './pages/NoMatch';
 import OrderHistory from './pages/OrderHistory';
-import Video from "./components/Video/index";
 import FAQ from "./components/FAQ/index";
 import CarListPage from './pages/CarList';
+import ContactForm from './pages/ContactForm';
+import AboutUs from './pages/AboutUs';
+import Success from './pages/Success';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
+
+document.title = 'Voltwheels';
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
@@ -53,55 +57,69 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <StoreProvider>
             <Nav />
-            <div className="container">
+            <div className="app-container">
+            <div className="main-content">
               <Routes>
-                <Route 
+                <Route
                   path="/"
                   element={<Home />}
                 />
-                <Route 
+                <Route
                   path="/carlist"
                   element={<CarListPage />}
                 />
-                <Route 
-                  path="/login" 
+                <Route
+                  path="/login"
                   element={<Login />}
                 />
-                <Route 
-                  path="/signup" 
+                <Route
+                  path="/signup"
                   element={<Signup />}
                 />
                 <Route
                   path="/carform"
                   element={<CarForm />}
                 />
-                <Route 
-                  path="/orderhistory" 
+                <Route
+                  path="/orderhistory"
                   element={<OrderHistory />}
                 />
-                <Route 
-                  path="/me" 
+                <Route
+                  path="/me"
                   element={<Profile />}
                 />
-                <Route 
-                  path="/profiles/:username" 
+                <Route
+                  path="/profiles/:username"
                   element={<Profile />}
                 />
-                <Route 
-                  path="/cars/:carId" 
+                <Route
+                  path="/cars/:carId"
                   element={<SingleCar />}
                 />
                 <Route
-                  path="*" 
-                  element={<FAQ />} 
+                  path="/faq"
+                  element={<FAQ />}
                 />
                 <Route
-                  path="*" 
-                  element={<NoMatch />} 
+                  path="/contactform"
+                  element={<ContactForm />}
+                />
+                <Route
+                  path="/aboutus"
+                  element={<AboutUs />}
+                />
+                <Route
+                  path="/success"
+                  element={<Success />}
+                />
+                <Route
+                  path="*"
+                  element={<NoMatch />}
                 />
               </Routes>
             </div>
             <Footer />
+            </div>
           </StoreProvider>
         </div>
       </Router>
@@ -110,6 +128,135 @@ function App() {
 }
 
 export default App;
+
+// import React from 'react';
+// import {
+//   ApolloClient,
+//   InMemoryCache,
+//   ApolloProvider,
+//   createHttpLink,
+// } from '@apollo/client';
+// import { setContext } from '@apollo/client/link/context';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { StoreProvider } from './utils/GlobalState';
+// import Home from './pages/Home';
+// import Signup from './pages/Signup';
+// import Login from './pages/Login';
+// import SingleCar from './pages/SingleCar';
+// import Profile from './pages/Profile';
+// import CarForm from './pages/CarForm';
+// import Nav from './components/Nav';
+// import Footer from './components/Footer';
+// import NoMatch from './pages/NoMatch';
+// import OrderHistory from './pages/OrderHistory';
+// import FAQ from "./components/FAQ/index";
+// import CarListPage from './pages/CarList';
+// import ContactForm from './pages/ContactForm';
+// import AboutUs from './pages/AboutUs';
+// import Success from './pages/Success';
+
+// // Construct our main GraphQL API endpoint
+// const httpLink = createHttpLink({
+//   uri: '/graphql',
+// });
+
+// document.title = 'Voltwheels';
+
+// // Construct request middleware that will attach the JWT token to every request as an `authorization` header
+// const authLink = setContext((_, { headers }) => {
+//   // get the authentication token from local storage if it exists
+//   const token = localStorage.getItem('id_token');
+//   // return the headers to the context so httpLink can read them
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : '',
+//     },
+//   };
+// });
+
+// const client = new ApolloClient({
+//   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
+
+// function App() {
+//   return (
+//     <ApolloProvider client={client}>
+//       <Router>
+//         <div className="flex-column justify-flex-start min-100-vh">
+//           <StoreProvider>
+//             <Nav />
+//             <div className="container">
+//               <Routes>
+//                 <Route 
+//                   path="/"
+//                   element={<Home />}
+//                 />
+//                 <Route 
+//                   path="/carlist"
+//                   element={<CarListPage />}
+//                 />
+//                 <Route 
+//                   path="/login" 
+//                   element={<Login />}
+//                 />
+//                 <Route 
+//                   path="/signup" 
+//                   element={<Signup />}
+//                 />
+//                 <Route
+//                   path="/carform"
+//                   element={<CarForm />}
+//                 />
+//                 <Route 
+//                   path="/orderhistory" 
+//                   element={<OrderHistory />}
+//                 />
+//                 <Route 
+//                   path="/me" 
+//                   element={<Profile />}
+//                 />
+//                 <Route 
+//                   path="/profiles/:username" 
+//                   element={<Profile />}
+//                 />
+//                 <Route 
+//                   path="/cars/:carId" 
+//                   element={<SingleCar />}
+//                 />
+//                 <Route
+//                   path="/faq" 
+//                   element={<FAQ />} 
+//                 />
+//                 <Route
+//                   path="/contactform"
+//                   element={<ContactForm />}
+//                 />
+//                 <Route
+//                   path="/aboutus"
+//                   element={<AboutUs />}
+//                 />
+//                 <Route
+//                   path="/success"
+//                   element={<Success />}
+//                 />
+//                 <Route
+//                   path="*" 
+//                   element={<NoMatch />} 
+//                 />
+//               </Routes>
+//             </div>
+//             <Footer />
+//           </StoreProvider>
+//         </div>
+//       </Router>
+//     </ApolloProvider>
+//   );
+// }
+
+// export default App;
 
 
 // import React from "react";

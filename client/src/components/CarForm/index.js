@@ -76,9 +76,6 @@ const CarForm = () => {
     if (name === 'price') {
       setPrice(value);
     }
-    if (name === 'quantity') {
-      setQuantity(value);
-    }
   };
 
   return (
@@ -184,17 +181,6 @@ const CarForm = () => {
                 name="price"
                 placeholder="Add Price"
                 value={price}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
-
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="quantity"
-                placeholder="Add Quantity"
-                value={quantity}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}

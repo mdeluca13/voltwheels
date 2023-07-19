@@ -9,20 +9,28 @@ function Nav({ currentPage, handlePageChange }) {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-            <li>
-                <Link to="/carlist">Cars for Sale</Link>
-            </li>
-          <li className="mx-1">
+        <ul className="flex-row navBarSpacing">
+          <li>
+              <Link to="/carlist">Cars for Sale</Link>
+          </li>
+          <li className="mx-1 navBarSpacing">
             <Link to="/orderhistory">{Auth.getProfile().data.username}'s Orders</Link>
           </li>
           <li>
             <Link to="/me">{Auth.getProfile().data.username}'s Car Ads</Link>
           </li>
-          <li>
+          <li className="mx-1 navBarSpacing">
             <Link to="/carform">Add Car for Sale</Link>
           </li>
-          <li className="mx-1">
+
+
+          <li className="mx-1 navBarSpacing">
+            <Link to="/aboutus">About Us</Link>
+          </li>
+          <li className="mx-1 navBarSpacing">
+            <Link to="/contactform">Contact Us</Link>
+          </li>
+          <li className="mx-1 navBarSpacing">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout
@@ -33,14 +41,20 @@ function Nav({ currentPage, handlePageChange }) {
     } else {
       return (
         <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">Signup</Link>
+          <li className="mx-1 .navbar-nav navBarSpacing">
+            <Link to="/signup ">Signup</Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 .navbar-nav navBarSpacing">
             <Link to="/login">Login</Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 .navbar-nav navBarSpacing">
             <Link to="/Faq">FAQs</Link>
+          </li>
+          <li className="mx-1 .navbar-nav navBarSpacing">
+            <Link to="/aboutus">About Us</Link>
+          </li>
+          <li className="mx-1 navBarSpacing">
+            <Link to="/contactform">Contact Us</Link>
           </li>
         </ul>
       );

@@ -12,8 +12,9 @@ import {
 } from '../utils/actions';
 import { QUERY_SINGLE_CAR } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
+import {BookmarkButton} from '../components/Bookmark/bookmarkButton';
 
-function SingleCar() {
+function SingleCar(props) {
   const [state, dispatch] = useStoreContext();
 
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
@@ -30,15 +31,16 @@ function SingleCar() {
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === carId);
     if (itemInCart) {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: carId,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-      });
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-      });
+      alert("This car is already in your cart");
+      // dispatch({
+      //   type: UPDATE_CART_QUANTITY,
+      //   _id: carId,
+      //   purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      // });
+      // idbPromise('cart', 'put', {
+      //   ...itemInCart,
+      //   purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      // });
     } else {
       dispatch({
         type: ADD_TO_CART,
@@ -48,20 +50,22 @@ function SingleCar() {
     }
   };
 
-  const removeFromCart = () => {
-    dispatch({
-      type: REMOVE_FROM_CART,
-      _id: car._id,
-    });
+  // const removeFromCart = () => {
+  //   dispatch({
+  //     type: REMOVE_FROM_CART,
+  //     _id: car._id,
+  //   });
 
-    idbPromise('cart', 'delete', { ...car });
-  };
+  //   idbPromise('cart', 'delete', { ...car });
+  // };
 
   return (
     <>
       {car && cart ? (
         <div className="container my-1">
           <Link to="/">← Back to Cars</Link>
+
+        <BookmarkButton carId={props.carId}/>
 
           <h2>{car.make}</h2>
 
@@ -70,12 +74,6 @@ function SingleCar() {
           <p>
             <strong>Price:</strong>${car.price}{' '}
             <button onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === car._id)}
-              onClick={removeFromCart}
-            >
-              Remove from Cart
-            </button>
           </p>
 
           {/* <img
