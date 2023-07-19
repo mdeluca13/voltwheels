@@ -26,12 +26,12 @@ const userSchema = new Schema({
       ref: 'Car',
     },
   ],
-  bookmarkedCars: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Car',
-    },
-  ],
+  // bookmarkedCars: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Car',
+  //   },
+  // ],
   // orders: [Order.schema]
 });
 

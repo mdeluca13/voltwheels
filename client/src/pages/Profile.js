@@ -49,6 +49,14 @@ const Profile = () => {
             showUsername={false}
           />
         </div>
+        <div className="col-12 col-md-10 mb-5">
+          <CarList
+            cars={user.bookmarkedCars}
+            title={`${user.username}'s bookmarked cars`}
+            showTitle={false}
+            showUsername={false}
+          />
+        </div>
         {/* <Cart /> */}
       </div>
     </div>

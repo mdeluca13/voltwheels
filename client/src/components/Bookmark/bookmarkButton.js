@@ -42,13 +42,15 @@ function SetStateAndToggle(props) {
     const {loading, data} = useQuery(QUERY_USER, {
         variables: {username: user.username}
     })
+    
+    console.log(data);
     const currentlyBookmarked = <FontAwesomeIcon icon={faHeart} />
 
     const notCurrenlyBookmarked = <FontAwesomeIcon icon={faHeartBroken} />
 
 
-    console.log(loading)
-    console.log(data)
+    console.log(loading);
+    console.log(data);
 
     // useEffect(() => {
     //     const userLoggedIn = localStorage.getItem('id_token');
@@ -61,7 +63,7 @@ function SetStateAndToggle(props) {
     const carId = props.carId
     // What needs to be fixed is the use of bookedmarked cars instead of cars column
     // bookmarked cars is returning null instead of an Empty Array
-    const bookmarked = data?.user.cars.filter((bookmarkedCars) => bookmarkedCars._id === carId)
+    const bookmarked = data?.user.bookmarkedCars.filter((bookmarkedCars) => bookmarkedCars._id === carId)
 
     // need the code to tell whether or not the carId is within the bookmark array of the logged in user. 
     // if the car id is in the array display the filled in heart icon and when clicked it will remove the carid from array.
