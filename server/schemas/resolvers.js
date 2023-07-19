@@ -169,7 +169,7 @@ const resolvers = {
     addBookmark: async (parent, { carId }, context) => {
       if (context.user) {
         
-        await User.findOneAndUpdate(
+      const car =  await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { bookmarkedCars: car._id } }
         );
@@ -185,7 +185,7 @@ const resolvers = {
         //   seller: context.user.username,
         // });
 
-        await User.findOneAndUpdate(
+       const car = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { bookmarkedCars: car._id } }
         );
