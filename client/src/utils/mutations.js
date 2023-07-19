@@ -152,3 +152,24 @@ export const ADD_ORDER = gql`
     }
   }
 `;
+
+export const ADD_BOOKMARK = gql`
+mutation addBookmark($user:bookmarkedCars){
+  addBookmark(user: $bookmarkedCars){
+    cars{
+      _id
+    }
+  }
+}
+`;
+
+
+export const REMOVE_BOOKMARK = gql`
+mutation removeBookmark ($user:bookmarkedCars){
+  removeBookmark(user: $bookmarkedCars){
+    cars{
+      _id
+    }
+  }
+}
+`;

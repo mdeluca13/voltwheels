@@ -10,14 +10,21 @@ db.once('open', async () => {
         username:'bobbyB',
         email: 'bob@email.com',
         password: 'bobsemail',
-        id: '64b299b4697fae56ea3af792'
+        id: '64b299b4697fae56ea3af792',
+        cars:[],
+        bookmarkedCars:[],
+        orders:[],
+
     });
 
     await User.create({
         username: 'JohnWick',
         email: 'john@badass.com',
         password: 'bacon4ever',
-        id: '87b299b4697fae56ea3af749'
+        id: '87b299b4697fae56ea3af749',
+        cars:[],
+        bookmarkedCars:[],
+        orders:[],
 });
 
 console.log('users created');

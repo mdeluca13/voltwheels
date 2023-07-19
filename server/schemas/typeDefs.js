@@ -57,6 +57,8 @@ const typeDefs = gql`
     updateCar(_id: ID!, quantity: Int!): Car
     addCar(make: String!, model: String!, year: Int!, color: String!, range: Int!, trim: String!, extra: String, image: String, price: Float!, quantity: Int!): Car
     removeCar(carId: ID!): Car
+    addBookmark(bookmarkedCars: ID!): User
+    removeBookmark(bookmarkedCars: ID!): User
   }
 `;
 
