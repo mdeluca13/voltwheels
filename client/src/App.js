@@ -19,6 +19,7 @@ import Footer from './components/Footer';
 import NoMatch from './pages/NoMatch';
 import OrderHistory from './pages/OrderHistory';
 import FAQ from "./components/FAQ/index";
+import { ChakraProvider } from '@chakra-ui/react';
 import CarListPage from './pages/CarList';
 import ContactForm from './pages/ContactForm';
 import AboutUs from './pages/AboutUs';
@@ -51,6 +52,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    <ChakraProvider>
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
@@ -119,6 +121,7 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+    </ChakraProvider>
   );
 }
 
