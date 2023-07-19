@@ -5,6 +5,7 @@ import Cart from '../Cart'
 import { ADD_CAR } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
+import ImageUpload from '../Image';
 
 const CarForm = () => {
   const [make, setMake] = useState('');
@@ -167,12 +168,12 @@ const CarForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
-
+            
             <div className="col-12 col-lg-9">
               <textarea
                 name="image"
                 placeholder="Add Image"
-                value={image}
+                value={ImageUpload(uploadedURL)}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}

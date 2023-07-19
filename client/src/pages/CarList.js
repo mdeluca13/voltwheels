@@ -12,11 +12,11 @@ const CarListPage = () => {
     <main>
       <div className="flex-row justify-center">
         <div
-          className="b"
+          className=""
           style={{ border: '1px dotted #1a1a1a' }}
         >
         </div>
-        <div className="b">
+        <div className="big">
           {loading ? (
             <div>Loading...</div>
           ) : (

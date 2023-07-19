@@ -195,12 +195,16 @@ input:focus {
 }
 
 .card {
-  width: 25%;
+  width: 75%;
   text-align: center;
 }
 
 .error-text {
   color: var(--error);
+}
+
+.big {
+text-align: left;
 }
 
 @media screen and (max-width: 768px) {
