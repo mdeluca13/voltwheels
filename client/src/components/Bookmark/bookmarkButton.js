@@ -8,7 +8,7 @@ import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '../../utils/mutations';
 
 
 function BookmarkButton(props) {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
 
     console.log(props)
 
@@ -33,7 +33,7 @@ function SetStateAndToggle(props) {
 
     const notCurrenlyBookmarked = <FontAwesomeIcon icon={faHeartBroken} />
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
 
     console.log(props)
 
