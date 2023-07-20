@@ -1,5 +1,6 @@
 nav {
   z-index: 1;
+  margin-right: 40px;
 }
 
 .flex-row-nav{
@@ -94,7 +95,7 @@ nav {
     /* top: 0; Stay on top */
     /* width: 100%; Full width */
     /* transit/ion: top 1s; Transition effect when sliding down (and up) */
-  /* } */ 
+  /* } */
 
   /* #navbar.navbar-shrink {
     padding-top: 0;
