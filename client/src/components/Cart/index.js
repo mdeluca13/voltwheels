@@ -17,10 +17,10 @@ const Cart = () => {
 
   useEffect(() => {
     if (data) {
-      window.location.replace("/success");
-      // stripePromise.then((res) => {
-      //   res.redirectToCheckout({ sessionId: data.checkout.session });
-      // });
+      // window.location.replace("/success");
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
     }
   }, [data]);
 
@@ -56,11 +56,11 @@ const Cart = () => {
       }
     });
 
-    // getCheckout({
-    //   variables: { cars: carIds },
-    // });
+    getCheckout({
+      variables: { cars: carIds },
+    });
     // console.log("click");
-    window.location.replace("/success");
+    // window.location.replace("/success");
   }
 
   if (!state.cartOpen) {
