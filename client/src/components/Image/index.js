@@ -34,7 +34,7 @@ const ImageUpload = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-   //THIS IS WHERE THE IMAGE GETS SUBMITTED
+   //not necessary
     console.log('Form submitted with image URL:', formImageURL);
   };
 
