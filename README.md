@@ -1,4 +1,4 @@
-# voltwheels# voltwheels
+# voltwheels
 
 ## Table Of Contents:
 
@@ -45,12 +45,6 @@ Link:![image](https://github.com/mdeluca13/voltwheels/assets/123771567/181828fb-
 MIT License
 Copyright (c) 2023
 
-## Creators:
-
-=======
-## license:
-MIT License
-Copyright (c) 2023 
 ## Creators:
 
 Megan, Wyatt, Himali, Brendan, Joshua
