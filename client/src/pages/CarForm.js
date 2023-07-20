@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Cart from '../components/Cart';
 import { ADD_CAR } from '../utils/mutations';
-// import { QUERY_CARS, QUERY_ME } from '../../utils/queries';
 import ImageUpload from '../components/Image';
 import Auth from '../utils/auth';
 
@@ -40,8 +39,17 @@ const CarForm = () => {
           seller: Auth.getProfile().data.username,
         },
       });
-
-      // setMake('');
+      window.location.assign('/carlist');
+      // Reset form fields after submission
+      setMake('');
+      setModel('');
+      setYear(2000);
+      setColor('');
+      setRange(300);
+      setTrim('');
+      setExtra('');
+      setImage('');
+      setPrice(30000);
     } catch (err) {
       console.error(err);
     }
@@ -80,144 +88,147 @@ const CarForm = () => {
   };
 
   return (
-    <div>
-      <h3>Add a Car for Sale</h3>
+    <div className='form-container'>
+      <div className='form-container-2'>
+        <h3 className="form-title">Add a Car for Sale</h3>
 
-      {Auth.loggedIn() ? (
-        <>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="make"
-                placeholder="Add Make"
-                value={make}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+        {Auth.loggedIn() ? (
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="model"
-                placeholder="Add Model"
-                value={model}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+        <form
+          className='car-form'
+          onSubmit={handleFormSubmit}
+        >
+          <div>
+            <label className='form-label'>Make</label>
+            <input
+              name="make"
+              placeholder="Add Make"
+              value={make}
+              className=""
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div>
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="year"
-                placeholder="Add Year"
-                value={year}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+          <div>
+            <label className='form-label'>Model</label>
+            <input
+              name="model"
+              placeholder="Add Model"
+              value={model}
+              className='car-form-item'
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div>
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="color"
-                placeholder="Add Color"
-                value={color}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+          <div>
+            <label className='form-label'>Year</label>
+            <input
+              name="year"
+              placeholder="Add Year"
+              value={year}
+              className='car-form-item'
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div>
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="range"
-                placeholder="Add Range"
-                value={range}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+          <div>
+            <label className='form-label'>Color</label>
+            <input
+              name="color"
+              placeholder="Add Color"
+              value={color}
+              className='car-form-item'
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div>
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="trim"
-                placeholder="Add Trim"
-                value={trim}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+          <div>
+          <label className='form-label'>Range</label>
+            <input
+              name="range"
+              placeholder="Add Range"
+              value={range}
+              className='car-form-item'
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div>
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="extra"
-                placeholder="Add Extras"
-                value={extra}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+          <div>
+          <label className='form-label'>Trim</label>
+            <input
+              name="trim"
+              placeholder="Add Trim"
+              value={trim}
+              className='car-form-item'
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div>
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="image"
-                placeholder="Add Image"
-                value={image}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+          <div>
+            <label className='form-label'>Extras</label>
+            <input
+              name="extra"
+              placeholder="Add Extras"
+              value={extra}
+              className='car-form-item'
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div>
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="price"
-                placeholder="Add Price"
-                value={price}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+          <div>
+            <label className='form-label'>Price</label>
+            <input
+              name="price"
+              placeholder="Add Price"
+              value={price}
+              className='car-form-item'
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div>
 
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="quantity"
-                placeholder="Add Quantity"
-                value={quantity}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
+          {/* <div className="col-12 col-lg-9">
+            <label>Image:</label>
+            <input
+              name="image"
+              placeholder="Add Image"
+              // value={ImageUpload(uploadedURL)}
+              className="form-input w-100"
+              style={{ lineHeight: '1.5', resize: 'vertical' }}
+              onChange={handleChange}
+            ></input>
+          </div> */}
+
+          <div>
+            {/* <ImageUpload name="image" onChange={handleChange} /> */}
+            <label className='form-label'>Image</label>
+            <ImageUpload setImage={setImage} />
+          </div>
+          <div>
+            <button type="submit" className='form-submit'>Submit</button>
+          </div>
+          {error && (
+            <div className="">
+              {error.message}
             </div>
-            <ImageUpload />
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Submit
-              </button>
-            </div>
-            {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
-                {error.message}
-              </div>
-            )}
-          </form>
-        </>
-      ) : (
-        <p>
-          You need to be logged in to add a car for sale. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
-      <Cart />
+          )}
+        </form>
+
+        ) : (
+          <p>
+            You need to be logged in to add a car for sale. Please{' '}
+            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          </p>
+        )}
+        <Cart />
+      </div>  
     </div>
   );
 };

@@ -129,6 +129,9 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      bookedmarkCars {
+        _id
+      }
       cars {
         _id
         make
@@ -143,24 +146,15 @@ export const QUERY_USER = gql`
         quantity
         seller
       }
-      orders {
-        _id
-        purchaseDate
-        cars {
-          _id
-        make
-        model
-        year
-        color
-        range
-        trim
-        extra
-        image
-        price
-        quantity
-        seller
-        }
-      }
+    }
+  }
+`;
+
+export const QUERY_ORDER = gql`
+  query getOrder {
+    order {
+      _id
+      purchaseDate
     }
   }
 `;
@@ -215,7 +209,22 @@ export const QUERY_ME = gql`
         model
         year
         color
+        range
+        trim
+        extra
+        image
+        price
+        quantity
         seller
+      }
+      orders {
+        _id
+        purchaseDate
+        cars {
+          _id
+          make
+          model
+        }
       }
     }
   }

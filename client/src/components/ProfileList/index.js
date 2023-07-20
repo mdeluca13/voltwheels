@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DeleteBtn from '../DeleteBtn';
 
 const CarList = ({
   cars,
@@ -27,6 +28,7 @@ const CarList = ({
             >
               View this Car
             </Link>
+            {/* <DeleteBtn /> */}
           </div>
         ))}
     </div>

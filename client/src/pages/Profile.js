@@ -1,25 +1,28 @@
-import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import Cart from '../components/Cart';
+import ProfileList from '../components/ProfileList';
 import CarList from '../components/CarList';
-
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-
+import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Profile = () => {
-  const { username: userParam } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
+  const [user, setUser] = useState(() => {
+    const userLoggedIn = localStorage.getItem('id_token');
+    if (userLoggedIn) {
+        const userData = Auth.getProfile(userLoggedIn)
+        return userData.data
+    }
+    return null
   });
-  console.log(data)
-  const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/me" />;
-  }
+  const {loading, data} = useQuery(QUERY_ME, {
+    variables: {username: user.username}
+  })
+
+  const userCarInfo = data?.me || data?.user || {};
+  
+  const userLoggedIn = localStorage.getItem('id_token');
 
   if (loading) {
     return <div>Loading...</div>;
@@ -33,26 +36,48 @@ const Profile = () => {
       </h4>
     );
   }
+  if (!userCarInfo) {
+    return <h3 className='none'>🚗 You have no cars for sale yet. You can add a car for sale on the "Add Car for Sale" page. 🚗 </h3>;
+  }
+  if (userLoggedIn && Auth.getProfile().data.username === user.username) {
+    console.log('working auth')
+    return (
 
-  return (
-    <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          {user.username}'s Cars for Sale
-        </h2>
-
-        <div className="col-12 col-md-10 mb-5">
-          <CarList
-            cars={user.cars}
-            title={`${user.username}'s ads`}
-            showTitle={false}
-            showUsername={false}
-          />
+      <div>
+        <div>
+          <h2 className="car-list-title">
+            {userCarInfo.username}'s Cars for Sale
+          </h2>
+  
+          <div className="car-list-container">
+            <ProfileList 
+              cars={userCarInfo.cars}
+              title={`${userCarInfo.username}'s ads`}
+              showTitle={false}
+              showUsername={false}
+            />
+          </div>
+          <div className="car-list-container">
+            <CarList
+              cars={userCarInfo.bookmarkedCars}
+              title={`${userCarInfo.username}'s bookmarked cars`}
+              showTitle={false}
+              showUsername={false}
+            />
+          </div>
+          <Cart />
         </div>
-        {/* <Cart /> */}
+        
       </div>
-    </div>
-  );
+      
+    );
+  }
+
+  
+
+  
+
+  
 };
 
 export default Profile;

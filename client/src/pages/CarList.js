@@ -10,13 +10,8 @@ const CarListPage = () => {
   
   return (
     <main>
-      <div className="flex-row justify-center">
-        <div
-          className="b"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-        </div>
-        <div className="b">
+      <div className='car-list-container'>
+        <div className="big">
           {loading ? (
             <div>Loading...</div>
           ) : (

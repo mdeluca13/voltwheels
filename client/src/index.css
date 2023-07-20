@@ -116,9 +116,9 @@ span[role="img"] {
   cursor: default;
 }
 
-form {
+/* form {
   width: 40%;
-}
+} */
 
 input {
   font-size: 1rem;
@@ -158,8 +158,95 @@ input:focus {
   flex-shrink: 0;
   background-color: #f5f5f5;
   padding: 20px;
+} 
+
+.form-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+  display: block;
 }
 
+.form-container {
+  border: solid #272f32;
+  border-radius: 20px;
+  padding: 20px;
+  margin:20px 20%;
+  display:flex;
+  justify-content: center;
+  /* text-align: center; */
+}
+
+.form-container-2 {
+  text-align: center;
+}
+
+.form-label {
+  font-weight: bold;
+  display: block;
+  padding: 5px;
+}
+
+.form-submit {
+  background-color:#F3A847;
+  padding: 5px 10px; 
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.car-form-submit:hover {
+  background-color: #F3A847;
+}
+
+.none {
+  text-align: center;
+  padding: 30px
+}
+
+.car-list-container {
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.car-list-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.car-list-item {
+  border: solid #272f32;
+  border-radius: 20px;
+  padding: 20px;
+  margin:10px;
+  text-align: center;
+}
+
+.car-list-item-header {
+  font-weight: bolder;
+}
+
+.car-list-item-price {
+  color: rgb(11, 90, 11);
+  display: flex;
+  justify-content: center;
+}
+
+.car-list-item-seller {
+  display: flex;
+  justify-content: center;
+}
+
+.car-list-button {
+  color: #dd820b;
+  display: flex;
+  justify-content: center;
+}
+
+.car-list-item-order {
+  font-weight: bolder;
+}
 
 .flex-row {
   display: flex;
@@ -168,10 +255,6 @@ input:focus {
 
 .space-between {
   justify-content: space-between;
-}
-
-.flex-end {
-  justify-content: flex-end;
 }
 
 .mx-1 {
@@ -214,13 +297,47 @@ input:focus {
   padding-bottom: var(--spacing-two);
 }
 
-.card {
-  width: 25%;
+.signup-login-form {
   text-align: center;
 }
 
 .error-text {
   color: var(--error);
+}
+
+.big {
+  text-align: left;
+}
+
+.delete-btn {
+  color:red;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
+}
+
+.about-header {
+  text-align: center;
+  padding:15px;
+  font-weight: bolder;
+}
+
+.about-content {
+  padding: 0 15px;
+  margin: 10px 30px;
+}
+
+.contact-header {
+  text-align: center;
+  padding:15px;
+  font-weight: bolder;
+}
+
+.contact-content {
+  text-align: center;
+  padding: 0 15px;
+  margin: 10px 30px;
 }
 
 @media screen and (max-width: 768px) {

@@ -3,10 +3,12 @@ import { useMutation } from '@apollo/client';
 import Jumbotron from '../components/Jumbotron';
 import { ADD_ORDER } from '../utils/mutations';
 import { idbPromise } from '../utils/helpers';
+import { useQuery } from '@apollo/client';
+import { QUERY_SINGLE_CAR } from '../utils/queries';
 
 function Success() {
   const [addOrder] = useMutation(ADD_ORDER);
-
+  
   useEffect(() => {
     async function saveOrder() {
       const cart = await idbPromise('cart', 'get');
@@ -14,7 +16,9 @@ function Success() {
 
       if (cars.length) {
         const { data } = await addOrder({ variables: { cars } });
+        console.log(`order data: ${data}`)
         const carData = data.addOrder.cars;
+        console.log('added to orders')
 
         carData.forEach((item) => {
           idbPromise('cart', 'delete', item);

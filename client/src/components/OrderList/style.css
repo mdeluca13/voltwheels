@@ -1,0 +1,34 @@
+.car-list-container {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .car-list-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+  }
+  
+  .car-list-item {
+    border: solid #272f32;
+    border-radius: 20px;
+    padding: 20px;
+    margin:10px;
+    text-align: center;
+  }
+  
+  .car-list-item-header {
+    font-weight: bolder;
+  }
+  
+  .car-list-item-price {
+    color: rgb(11, 90, 11);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .car-list-item-seller {
+    display: flex;
+    justify-content: center;
+  }  

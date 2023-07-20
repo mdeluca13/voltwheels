@@ -28,3 +28,7 @@
 .social-icons img:hover {
   transform: scale(1.1);
 }
+
+.footer-link-space {
+  padding: 0 5px;
+}

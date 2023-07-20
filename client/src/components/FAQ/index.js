@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './FAQ.css';
 
+
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -31,6 +32,7 @@ const FAQ = () => {
   }];
 
   return (
+
     <div className="faq-container">
       <h1>Frequently Asked Questions</h1>
       {faqData.map((faq, index) => (
