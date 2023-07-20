@@ -15,7 +15,7 @@ const CarList = ({
       {cars &&
         cars.map((car) => (
           <div key={car._id} className='car-list-item'>
-            {/* <img></img> */}
+            <img src={car.image} alt={car.name} />
             <h5 className='car-list-item-header'>
               {car.color} {car.year} {car.make} {car.model}
             </h5>

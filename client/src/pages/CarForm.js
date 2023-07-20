@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import Cart from '../components/Cart';
 import { ADD_CAR } from '../utils/mutations';
 import ImageUpload from '../components/Image';
+import { IMAGE_URL } from '../components/Image';
 import Auth from '../utils/auth';
 
 const CarForm = () => {
@@ -15,6 +16,7 @@ const CarForm = () => {
   const [trim, setTrim] = useState('');
   const [extra, setExtra] = useState('');
   const [image, setImage] = useState('');
+  const [imageURL, setImageURL] = useState('');
   const [price, setPrice] = useState(30000);
   const [quantity, setQuantity] = useState(1);
 
@@ -22,6 +24,7 @@ const CarForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(IMAGE_URL);
 
     try {
       const { data } = await addCar({
@@ -33,13 +36,16 @@ const CarForm = () => {
           range,
           trim,
           extra,
-          image,
+          image: imageURL,
           price,
           quantity,
           seller: Auth.getProfile().data.username,
         },
       });
       window.location.assign('/carlist');
+      if (error) {
+        console.error(error)
+      }
       // Reset form fields after submission
       setMake('');
       setModel('');
@@ -49,6 +55,7 @@ const CarForm = () => {
       setTrim('');
       setExtra('');
       setImage('');
+      setImageURL('');
       setPrice(30000);
     } catch (err) {
       console.error(err);
@@ -194,28 +201,28 @@ const CarForm = () => {
             ></input>
           </div>
 
-          {/* <div className="col-12 col-lg-9">
-            <label>Image:</label>
+          <div className='visibility'>
+            <label className="form-label">Image</label>
             <input
               name="image"
               placeholder="Add Image"
-              // value={ImageUpload(uploadedURL)}
-              className="form-input w-100"
+              value={imageURL}
+              className="car-form-item"
               style={{ lineHeight: '1.5', resize: 'vertical' }}
               onChange={handleChange}
             ></input>
-          </div> */}
+          </div>
 
           <div>
             {/* <ImageUpload name="image" onChange={handleChange} /> */}
             <label className='form-label'>Image</label>
-            <ImageUpload setImage={setImage} />
+            <ImageUpload setImageURL={setImageURL} />
           </div>
           <div>
             <button type="submit" className='form-submit'>Submit</button>
           </div>
           {error && (
-            <div className="">
+            <div>
               {error.message}
             </div>
           )}

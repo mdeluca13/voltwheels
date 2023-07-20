@@ -78,10 +78,6 @@ function SingleCar(props) {
             <p>Extras: {car.extra}</p>
             <p className='car-list-item-price'>Price: ${car.price}</p>
             <button onClick={addToCart} className='form-submit'>Add to Cart</button>
-            {/* <img
-              src={`/images/${currentCar.image}`}
-              alt={currentCar.name}
-            /> */}
           </div>
         </div>
       ) : null}

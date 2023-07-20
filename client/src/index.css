@@ -116,9 +116,9 @@ span[role="img"] {
   cursor: default;
 }
 
-/* form {
-  width: 40%;
-} */
+.visibility {
+  display:none;
+}
 
 input {
   font-size: 1rem;
