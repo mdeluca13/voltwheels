@@ -152,3 +152,45 @@ export const ADD_ORDER = gql`
     }
   }
 `;
+
+export const REMOVE_CAR = gql`
+  mutation removeCar ($car:ID){
+    removeCar(car: $car){
+      cars{
+        _id
+        make
+        model
+        year
+        color
+        range
+        trim
+        extra
+        image
+        price
+        quantity
+        seller
+      }
+    }
+  }
+`;
+
+export const ADD_BOOKMARK = gql`
+  mutation addBookmark($user:bookmarkedCars){
+    addBookmark(user: $bookmarkedCars){
+      cars{
+        _id
+      }
+    }
+  }
+`;
+
+
+export const REMOVE_BOOKMARK = gql`
+  mutation removeBookmark ($user:bookmarkedCars){
+    removeBookmark(user: $bookmarkedCars){
+      cars{
+        _id
+      }
+    }
+  }
+`;

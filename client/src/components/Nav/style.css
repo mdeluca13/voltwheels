@@ -2,7 +2,7 @@ nav {
   z-index: 1;
 }
 
-.flex-row{
+.flex-row-nav{
   display: flex;
     flex-wrap: wrap;
     align-items: center;

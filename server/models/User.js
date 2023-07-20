@@ -26,7 +26,14 @@ const userSchema = new Schema({
       ref: 'Car',
     },
   ],
-  orders: [Order.schema]
+  orders: [Order.schema],
+  // bookmarkedCars: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Car',
+  //   },
+  // ],
+  // orders: [Order.schema]
 });
 
 userSchema.pre('save', async function (next) {

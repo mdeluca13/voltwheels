@@ -5,6 +5,17 @@
   height: 100vh;
 }
 
+.text-border {
+  color: #fff; /* Set the text color */
+  font-size: 36px; /* Set the font size */
+  font-weight: bold; /* Set the font weight if needed */
+  text-shadow:
+    -1px -1px 0 #000, /* Top-left shadow */
+    1px -1px 0 #000,  /* Top-right shadow */
+    -1px 1px 0 #000,  /* Bottom-left shadow */
+    1px 1px 0 #000;   /* Bottom-right shadow */
+}
+
 video {
   width: 100%;
   height: 100%;

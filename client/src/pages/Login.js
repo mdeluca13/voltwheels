@@ -33,11 +33,11 @@ const Login = (props) => {
     });
   };
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10 boxSpacing">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+    <main className="form-container">
+      <div>
+        <div className='form-container-2'>
+          <h4 className="form-title">Login</h4>
+          <div>
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -45,32 +45,35 @@ const Login = (props) => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-                <div className='boxSpacing'>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                /></div>
-                <div className='boxSpacing'>
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                /></div>
-                <div className='boxSpacing'>
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button></div>
+                <div>
+                <label className='form-label'>Email</label>
+                  <input
+                    className="form-input"
+                    placeholder="Your email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label className='form-label'>Password</label>
+                  <input
+                    className="form-input"
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <button
+                    className="form-submit"
+                    style={{ cursor: 'pointer' }}
+                    type="submit"
+                  >Submit</button>
+                </div>
               </form>
             )}
             {error && (

@@ -1,13 +1,9 @@
 import React from 'react';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { StoreProvider } from './utils/GlobalState';
+import { ChakraProvider } from '@chakra-ui/react';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -52,7 +48,8 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <ChakraProvider>
+      <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <StoreProvider>
@@ -124,6 +121,8 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+    </ChakraProvider>
+    
   );
 }
 

@@ -1,30 +1,43 @@
-import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+// import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Cart from '../components/Cart';
-import CarList from '../components/CarList';
-
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+// import CarList from '../components/CarList';
+import OrderList from '../components/OrderList';
+import {  QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
 const OrderHistory = () => {
 
-  const { loading, data } = useQuery(Auth.loggedIn() ? QUERY_USER : QUERY_USER, {
-    variables: { username: Auth.getProfile().data.username },
-  });
-  console.log(data)
-  const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
-  if (Auth.loggedIn()) {
-    return <Navigate to="/orderhistory" />;
-  }
 
+  const [user, setUser] = useState(() => {
+    const userLoggedIn = localStorage.getItem('id_token');
+    if (userLoggedIn) {
+        const userData = Auth.getProfile(userLoggedIn)
+        return userData.data
+    }
+    return null
+  });
+  const {loading, data} = useQuery(QUERY_ME)
+  
+  
+  
+  const userOrderInfo = data?.me || data?.user || {};
+  // for (var i =0; i < userOrderInfo.orders.length; i++) {
+    
+  // }
+  // console.log(`user data: ${userOrderInfo.orders[0].cars[1]._id}`)
+  const userLoggedIn = localStorage.getItem('id_token');
+
+  const array = [];
+  array.push(userOrderInfo)
+ 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (!Auth.getProfile().data.username) {
+  if (!userLoggedIn) {
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to
@@ -33,25 +46,31 @@ const OrderHistory = () => {
     );
   }
 
-  return (
-    <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          {Auth.getProfile().data.username}'s Previous Orders
-        </h2>
+  if (!userOrderInfo) {
+    return <h3 className='none'>🚗 You have no Orders Yet. You can visit the "Cars for Sale" page to find your first Car! 🚗 </h3>;
+  }  
+  if (userLoggedIn && Auth.getProfile().data.username === user.username) {
 
-        <div className="col-12 col-md-10 mb-5">
-          <CarList
-            cars={user.cars}
-            title={`${user.username}'s previous orders`}
-            showTitle={false}
-            showUsername={false}
-          />
+    return (
+      <div>
+        <div>
+          <h2 className="car-list-title">
+            {Auth.getProfile().data.username}'s Previous Orders
+          </h2>
+
+          <div>
+            <OrderList
+              orders={userOrderInfo.orders}
+              title={`${userOrderInfo.username}'s previous orders`}
+              showTitle={false}
+              showUsername={false}
+            />
+          </div>
+          <Cart />
         </div>
-        <Cart />
       </div>
-    </div>
-  );
+    );
+  };
 };
 
 export default OrderHistory;

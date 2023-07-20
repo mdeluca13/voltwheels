@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DeleteBtn from '../DeleteBtn';
 
-const CarList = ({
+const ProfileList = ({
   cars,
   title,
   showTitle = true,
@@ -27,10 +28,11 @@ const CarList = ({
             >
               View this Car
             </Link>
+            {/* <DeleteBtn /> */}
           </div>
         ))}
     </div>
   );
 };
 
-export default CarList;
+export default ProfileList;

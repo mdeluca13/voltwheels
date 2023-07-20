@@ -17,6 +17,10 @@ import {BookmarkButton} from '../components/Bookmark/bookmarkButton';
 function SingleCar(props) {
   const [state, dispatch] = useStoreContext();
 
+  const id = document.location.pathname.split('/')[2]
+
+  console.log(id)
+
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { carId } = useParams();
 
@@ -62,24 +66,19 @@ function SingleCar(props) {
   return (
     <>
       {car && cart ? (
-        <div className="container my-1">
-          <Link to="/">← Back to Cars</Link>
+        <div className="form-container">
+          <div className='form-container-2'>          
+            <Link to="/">← Back to Cars</Link>
 
-        <BookmarkButton carId={props.carId}/>
-
-          <h2>{car.make}</h2>
-
-          <p>{car.model}</p>
-
-          <p>
-            <strong>Price:</strong>${car.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
-          </p>
-
-          {/* <img
-            src={`/images/${currentCar.image}`}
-            alt={currentCar.name}
-          /> */}
+            <BookmarkButton carId={props.carId}/>
+            <img src={car.image} alt={car.name} />
+            <h2 className='car-list-item-header'> {car.color} {car.year} {car.make} {car.model}</h2>
+            <p>Range: {car.range}</p>
+            <p>Trim: {car.trim}</p>
+            <p>Extras: {car.extra}</p>
+            <p className='car-list-item-price'>Price: ${car.price}</p>
+            <button onClick={addToCart} className='form-submit'>Add to Cart</button>
+          </div>
         </div>
       ) : null}
       {loading ? <p>Loading...</p> : null}

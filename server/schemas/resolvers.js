@@ -34,9 +34,10 @@ const resolvers = {
     },
     order: async (parent, { _id }, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate('cars');
+        const user = await User.findById(context.user._id).populate('orders', 'cars');
+        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
-        return user.orders.id(_id);
+        return user;
       }
 
       throw new AuthenticationError('Not logged in');
@@ -168,6 +169,34 @@ const resolvers = {
       const decrement = Math.abs(quantity) * -1;
 
       return await Car.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+    },
+    addBookmark: async (parent, { carId }, context) => {
+      if (context.user) {
+        
+      const car =  await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { bookmarkedCars: car._id } }
+        );
+
+        return bookmarkedCars;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeBookmark: async (parent, { carId }, context) => {
+      if (context.user) {
+        // const car = await Car.findOneAndDelete({
+        //   bookmarkedCars: carId,
+        //   seller: context.user.username,
+        // });
+
+       const car = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { bookmarkedCars: car._id } }
+        );
+
+        return bookmarkedCars;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };
