@@ -1,1 +1,35 @@
 # voltwheels
+## Table Of Contents:
+- Description Of Functionality
+- Installation
+- Link to Deployed Application
+- ScreenShot of Deployed Application
+- Built With
+- License
+- Creators
+## Description Of Functionality:
+- This website allows users to view, buy and sell electric vehicles.
+- Users must be signed up and logged in to buy cars and to create car ads.
+- The site uses stripe to accept payments for vehicles. 
+## Installation:
+- Open the website link to heroku
+## link To Deployed Application:
+Link: https://voltwheels-a4fbaac8309b.herokuapp.com/
+## ScreenShot of Deployed Application:
+Link:![image](https://github.com/mdeluca13/voltwheels/assets/123771567/181828fb-726b-48e7-b6a4-59a20fc65801)
+
+## Built With:
+- React
+- CSS
+- graphql
+- node.js
+- express.js
+- MongoDB
+- Mongoose
+- Stripe
+- Javascript
+## license:
+MIT License
+Copyright (c) 2023 
+## Creators:
+Megan, Wyatt, Himali, Brendan, Joshua
