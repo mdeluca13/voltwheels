@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 
-const ImageUpload = () => {
-  const [imageURL, setImageURL] = useState('');
+//const [tempURL, setTempURL] = useState('');
+let tempURL='';
+
+const ImageUpload = ({setImageURL}) => {
+
+   // const imageLink = props.imageLink;
+   // const setImageLink = props.setImageLink();
+    
+  //const [imageURL, setImageURL] = useState('');
   const [formImageURL, setFormImageURL] = useState('');
 
   const handleFileUpload = (event) => {
@@ -23,8 +30,10 @@ const ImageUpload = () => {
       .then((data) => {
         const uploadedURL = data.secure_url;
         setImageURL(uploadedURL);
-        setFormImageURL(uploadedURL);
+        //setFormImageURL(uploadedURL);
         console.log('Upload success:', uploadedURL);
+        return uploadedURL;
+
       })
       .catch((error) => {
         console.log('Upload error:', error);
@@ -46,3 +55,4 @@ const ImageUpload = () => {
 };
 
 export default ImageUpload;
+export const IMAGE_URL=tempURL;

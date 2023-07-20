@@ -81,9 +81,10 @@ function SingleCar(props) {
             </button>
           </p>
 
-         {<img src={car.image} alt={car.name} />
-
-      }
+         { <img
+             src={car.image}
+             alt={car.model}
+        />}
         </div>
       ) : null}
       {loading ? <p>Loading...</p> : null}

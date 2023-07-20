@@ -72,7 +72,7 @@ const CarForm = () => {
       setExtra(value);
     }
     if (name === 'image') {
-      setImage(value);
+      setImage(ImageUpload.imageURL);
     }
     if (name === 'price') {
       setPrice(value);
@@ -173,7 +173,7 @@ const CarForm = () => {
               <textarea
                 name="image"
                 placeholder="Add Image"
-                value={ImageUpload(uploadedURL)}
+                value={image}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -224,5 +224,6 @@ const CarForm = () => {
     </div>
   );
 };
+
 
 export default CarForm;
