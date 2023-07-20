@@ -36,7 +36,7 @@ const Profile = () => {
       </h4>
     );
   }
-  if (!userCarInfo) {
+  if (!userCarInfo.length) {
     return <h3 className='none'>🚗 You have no cars for sale yet. You can add a car for sale on the "Add Car for Sale" page. 🚗 </h3>;
   }
   if (userLoggedIn && Auth.getProfile().data.username === user.username) {

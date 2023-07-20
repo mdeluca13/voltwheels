@@ -168,6 +168,9 @@
   .signup-form {
     width: 100%;
   }
+  .image-style {
+    border-radius: 10px
+  }
   @media screen and (max-width: 768px) {
     .card {
       width: 100%;

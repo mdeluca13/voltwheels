@@ -40,17 +40,14 @@ Link:![image](https://github.com/mdeluca13/voltwheels/assets/123771567/181828fb-
 - Javascript
 
 
-## license:
+## License:
 
-MIT License
+MIT License 
+
 Copyright (c) 2023
 
-## Creators:
-
 =======
-## license:
-MIT License
-Copyright (c) 2023 
+
 ## Creators:
 
 Megan, Wyatt, Himali, Brendan, Joshua
