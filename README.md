@@ -29,7 +29,6 @@ Link: https://voltwheels-a4fbaac8309b.herokuapp.com/
 Link:![image](https://github.com/mdeluca13/voltwheels/assets/123771567/181828fb-726b-48e7-b6a4-59a20fc65801)
 
 ## Built With:
-
 - React
 - CSS
 - graphql
@@ -40,11 +39,18 @@ Link:![image](https://github.com/mdeluca13/voltwheels/assets/123771567/181828fb-
 - Stripe
 - Javascript
 
+
 ## license:
 
 MIT License
 Copyright (c) 2023
 
+## Creators:
+
+=======
+## license:
+MIT License
+Copyright (c) 2023 
 ## Creators:
 
 Megan, Wyatt, Himali, Brendan, Joshua
