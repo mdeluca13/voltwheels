@@ -9,9 +9,9 @@ const OrderList = ({
   showUsername = true,
 }) => {
   console.log(`cars: ${orders}`)
-  if (!orders.length) {
-    return <h3 className='none'>🚗 You have no Orders Yet. You can visit the "Cars for Sale" page to find your first Car! 🚗</h3>;
-  }
+  // if (!orders) {
+  //   return <h3 className='none'>🚗 You have no Orders Yet. You can visit the "Cars for Sale" page to find your first Car! 🚗</h3>;
+  // }
 
   return (
     <div>

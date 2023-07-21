@@ -38,7 +38,7 @@ const Profile = () => {
     );
   }
   if (!userCarInfo) {
-    return <h3 className='none'>🚗 You have no cars for sale yet. You can add a car for sale on the "Add Car for Sale" page. 🚗 </h3>;
+    return <h3 className=''>🚗 You have no cars for sale yet. You can add a car for sale on the "Add Car for Sale" page. 🚗 </h3>;
   }
   if (userLoggedIn && Auth.getProfile().data.username === user.username) {
     console.log('working auth')

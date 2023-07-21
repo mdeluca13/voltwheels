@@ -11,6 +11,9 @@ const ProfileList = ({
 }) => {
   console.log(`cars: ${cars}`)
 
+  // if (!cars) {
+  //   return <h3 className='none'>🚗 You have no cars for sale yet. You can add a car for sale on the "Add Car for Sale" page. 🚗 </h3>;
+  // }
   return (
     <div>
       {showTitle && <h3 className='car-list-title'>{title}</h3>}
