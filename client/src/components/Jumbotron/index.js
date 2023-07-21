@@ -1,5 +1,6 @@
 import React from "react";
 
+// jumbotron effects
 function Jumbotron({ children }) {
   return (
     <div

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 //const [tempURL, setTempURL] = useState('');
 let tempURL='';
 
+// image upload function rendering the coudinary push and fetch for image upload and download for display
 const ImageUpload = ({setImageURL}) => {
 
    // const imageLink = props.imageLink;

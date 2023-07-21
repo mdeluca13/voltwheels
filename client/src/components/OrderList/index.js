@@ -1,5 +1,7 @@
 import React from 'react';
 import './style.css'
+
+// order list to display users prev orders 
 const OrderList = ({
   orders,
   title,

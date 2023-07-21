@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FAQ.css';
 
-
+// faq display for the faq page
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 

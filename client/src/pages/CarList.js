@@ -4,6 +4,7 @@ import CarList from '../components/CarList';
 import Cart from "../components/Cart";
 import { QUERY_CARS } from '../utils/queries';
 
+// rendering cars for sale page
 const CarListPage = () => {
   const { loading, data } = useQuery(QUERY_CARS);
   const cars = data?.cars || [];

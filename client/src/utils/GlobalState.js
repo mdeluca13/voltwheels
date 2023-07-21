@@ -1,6 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { useCarReducer } from './reducers'
 
+// global state for cart
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 

@@ -7,21 +7,23 @@ import ImageUpload from '../components/Image';
 import { IMAGE_URL } from '../components/Image';
 import Auth from '../utils/auth';
 
+// car form page and function to render the post to the db and add it as a car for sale
 const CarForm = () => {
   const [make, setMake] = useState('');
   const [model, setModel] = useState('');
-  const [year, setYear] = useState(2000);
+  const [year, setYear] = useState('');
   const [color, setColor] = useState('');
-  const [range, setRange] = useState(300);
+  const [range, setRange] = useState('');
   const [trim, setTrim] = useState('');
   const [extra, setExtra] = useState('');
   const [image, setImage] = useState('');
   const [imageURL, setImageURL] = useState('');
-  const [price, setPrice] = useState(30000);
+  const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState(1);
 
   const [addCar, { error }] = useMutation(ADD_CAR);
 
+  // handling submission of form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(IMAGE_URL);
@@ -49,19 +51,20 @@ const CarForm = () => {
       // Reset form fields after submission
       setMake('');
       setModel('');
-      setYear(2000);
+      setYear('');
       setColor('');
-      setRange(300);
+      setRange('');
       setTrim('');
       setExtra('');
       setImage('');
       setImageURL('');
-      setPrice(30000);
+      setPrice('');
     } catch (err) {
       console.error(err);
     }
   };
 
+  // handling change for form
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -94,6 +97,7 @@ const CarForm = () => {
     }
   };
 
+  // car form
   return (
     <div className='form-container'>
       <div className='form-container-2'>

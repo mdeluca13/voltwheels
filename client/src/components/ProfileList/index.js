@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import DeleteBtn from '../DeleteBtn';
 
+// profile list to show users ads theyve added 
 const ProfileList = ({
   cars,
   title,

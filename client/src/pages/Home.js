@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import Video from '../components/Video';
 import { QUERY_CARS } from '../utils/queries';
 
+// displaying home with video
 const Home = () => {
   const { loading, data } = useQuery(QUERY_CARS);
   const cars = data?.cars || [];

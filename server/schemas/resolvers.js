@@ -3,6 +3,7 @@ const { User, Car, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
+// resolvers for queries and mutations
 const resolvers = {
   Query: {
     users: async () => {

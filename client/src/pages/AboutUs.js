@@ -1,5 +1,6 @@
 import React from 'react';
 
+// about us page content
 const AboutUs = () => {
   return (
     <div>

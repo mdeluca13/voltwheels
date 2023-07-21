@@ -6,6 +6,7 @@ import CarList from '../components/CarList';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
+// queries the user and displays the cars they have for sale
 const Profile = () => {
 
   const [user, setUser] = useState(() => {

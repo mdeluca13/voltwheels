@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+// car model
 const carSchema = new Schema({
   make: {
     type: String,
@@ -10,7 +11,7 @@ const carSchema = new Schema({
     required: true,
   },
   year: {
-    type: Number,
+    type: String,
     required: true,
   },
   color: {
@@ -18,7 +19,7 @@ const carSchema = new Schema({
     required: true,
   },
   range: {
-    type: Number,
+    type: String,
     required: true,
   },
   trim: {
@@ -31,7 +32,7 @@ const carSchema = new Schema({
     type: String,
   },
   price: {
-    type: Number,
+    type: String,
     required: true,
   },
   quantity: {
