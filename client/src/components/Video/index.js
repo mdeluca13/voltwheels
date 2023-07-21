@@ -11,7 +11,7 @@ import Typewriter from './Typewriter'; // Adjust the import path as per your fol
 
   const interval = 150; // Adjust the interval (in milliseconds) to control typing speed.
 
-
+// rendering the video and typewriter effect on display
 const Main = () => {
   return (
     <div className='main'>

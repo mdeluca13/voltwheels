@@ -7,7 +7,7 @@ import { QUERY_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 
 
-
+// bookmark button to display different icons when clicked
 function BookmarkButton(props) {
     // const [user, setUser] = useState();
 

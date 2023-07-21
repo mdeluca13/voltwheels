@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import logo from './logo.png';
 
-
+// nav display and links
 function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {

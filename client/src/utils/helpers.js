@@ -5,6 +5,7 @@ export function pluralize(name, count) {
   return name + 's';
 }
 
+// helpers for cart
 export function idbPromise(storeName, method, object) {
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open('volt', 1);

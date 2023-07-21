@@ -46,6 +46,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// rendering app and calling the routes
 function App() {
   return (
     <ChakraProvider>

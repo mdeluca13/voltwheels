@@ -1,6 +1,7 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
 
+// if there is a url that does not match our routes this page will display
 const NoMatch = () => {
   return (
     <div>

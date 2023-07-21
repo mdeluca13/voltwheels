@@ -1,5 +1,6 @@
 import React from 'react';
 
+// contact form display
 const ContactForm = () => {
   return (
     <div>

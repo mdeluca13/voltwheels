@@ -6,6 +6,7 @@ import CarList from '../components/CarList';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
+// queries the user and displays the cars they have for sale
 const Profile = () => {
 
   const [user, setUser] = useState(() => {
@@ -37,7 +38,7 @@ const Profile = () => {
     );
   }
   if (!userCarInfo) {
-    return <h3 className='none'>🚗 You have no cars for sale yet. You can add a car for sale on the "Add Car for Sale" page. 🚗 </h3>;
+    return <h3 className=''>🚗 You have no cars for sale yet. You can add a car for sale on the "Add Car for Sale" page. 🚗 </h3>;
   }
   if (userLoggedIn && Auth.getProfile().data.username === user.username) {
     console.log('working auth')

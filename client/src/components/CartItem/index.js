@@ -3,6 +3,8 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
+// Cartitem to handle changes to cart and display
+
 const CartItem = ({ item }) => {
 
   const [, dispatch] = useStoreContext();

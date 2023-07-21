@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 
+// carcard function to add and remove bookmark from user
 function CarCard({ car, bookmarkedCar }) {
     const { id, make, model, year, image, bookmarked } = car
 

@@ -8,6 +8,7 @@ import {  QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
+// queries the user and displays car order history for user
 const OrderHistory = () => {
 
 

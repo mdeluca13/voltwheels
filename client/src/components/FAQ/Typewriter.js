@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
+// adds the typewriter effects
 const Typewriter = ({ texts, interval }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');

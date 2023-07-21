@@ -14,6 +14,7 @@ import { QUERY_SINGLE_CAR } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import {BookmarkButton} from '../components/Bookmark/bookmarkButton';
 
+// queries individual car and displays its information
 function SingleCar(props) {
   const [state, dispatch] = useStoreContext();
 
