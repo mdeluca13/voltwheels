@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Carlist variable that displays the looped car list individually
 const CarList = ({
   cars,
   title,
